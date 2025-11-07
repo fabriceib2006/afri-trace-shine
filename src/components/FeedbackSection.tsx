@@ -1,207 +1,219 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MessageSquare, AlertCircle } from "lucide-react";
-import { useState } from "react";
+import { Label } from "@/components/ui/label";
+import { AlertCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 const feedbackSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  location: z.string().trim().min(1, "Location is required").max(200),
-  category: z.string().min(1, "Please select a category"),
-  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000)
+  title: z.string().trim().min(3, { message: "Title must be at least 3 characters" }).max(200),
+  location: z.string().trim().max(200),
+  category: z.string().min(1, { message: "Please select a category" }),
+  description: z.string().trim().min(10, { message: "Description must be at least 10 characters" }).max(1000)
 });
 
 const FeedbackSection = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    title: "",
     location: "",
     category: "",
-    message: ""
+    description: "",
   });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    // Scroll to section if user is logged in (coming from login redirect)
+    if (user) {
+      const section = document.getElementById('feedback-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [user]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!user) {
+      toast.error("Please log in to submit feedback");
+      navigate('/auth');
+      return;
+    }
     
     try {
       feedbackSchema.parse(formData);
-      toast.success("Thank you for your feedback! We'll review it shortly.");
+      
+      setLoading(true);
+      
+      const { error } = await supabase
+        .from('feedback_reports')
+        .insert({
+          user_id: user.id,
+          title: formData.title,
+          category: formData.category,
+          location: formData.location,
+          description: formData.description,
+          status: 'pending'
+        });
+      
+      setLoading(false);
+      
+      if (error) {
+        toast.error("Failed to submit feedback. Please try again.");
+        return;
+      }
+      
+      toast.success("Thank you for your feedback! We will review it shortly.");
+      
       setFormData({
-        name: "",
-        email: "",
+        title: "",
         location: "",
         category: "",
-        message: ""
+        description: "",
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast.error(error.errors[0].message);
       }
+      setLoading(false);
     }
   };
 
-  const handleChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   return (
-    <section id="feedback" className="py-20 bg-muted/30">
+    <section id="feedback-section" className="py-20 bg-gradient-to-b from-background to-earth-light/20">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-primary mb-4">
-              Community Feedback & Reporting
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Your voice matters. Report concerns, share feedback, or ask questions about mining
-              operations in your area.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Info Card */}
-            <Card className="border-secondary/50 bg-gradient-to-br from-secondary/5 to-transparent">
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <h2 className="text-4xl font-bold mb-6">Report & Feedback</h2>
+            {!user && (
+              <Card className="mb-4 border-blue-500">
+                <CardContent className="pt-6">
+                  <p className="text-sm mb-4">
+                    <strong>Sign in required:</strong> You must be logged in to submit feedback.
+                  </p>
+                  <Button onClick={() => navigate('/auth')} className="w-full">
+                    Sign In or Create Account
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
+            <Card className="border-primary/20">
               <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-secondary/10">
-                    <MessageSquare className="h-6 w-6 text-secondary" />
-                  </div>
-                  <CardTitle>Why Report?</CardTitle>
+                <div className="flex items-center mb-2">
+                  <AlertCircle className="h-6 w-6 text-primary mr-2" />
+                  <CardTitle>Why Your Report Matters</CardTitle>
                 </div>
                 <CardDescription>
-                  Your feedback helps us maintain transparency and accountability
+                  Your feedback helps ensure transparency and accountability in Rwanda's mining sector.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex gap-3">
-                  <div className="h-8 w-8 rounded-full bg-sustainability/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-sustainability font-bold text-sm">1</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Environmental Concerns</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Report water quality, air quality, or land use issues
-                    </p>
-                  </div>
+                <div>
+                  <h4 className="font-semibold mb-2">What You Can Report:</h4>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>• Environmental concerns or violations</li>
+                    <li>• Social impact on local communities</li>
+                    <li>• Certification irregularities</li>
+                    <li>• General feedback on mining operations</li>
+                  </ul>
                 </div>
-
-                <div className="flex gap-3">
-                  <div className="h-8 w-8 rounded-full bg-trust/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-trust font-bold text-sm">2</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Social Impact</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Share feedback on community benefits and employment
-                    </p>
-                  </div>
+                <div>
+                  <h4 className="font-semibold mb-2">How It Works:</h4>
+                  <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
+                    <li>Submit your concern or feedback</li>
+                    <li>Our team reviews all submissions</li>
+                    <li>Appropriate action is taken</li>
+                    <li>You receive updates on progress</li>
+                  </ol>
                 </div>
-
-                <div className="flex gap-3">
-                  <div className="h-8 w-8 rounded-full bg-destructive/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-destructive font-bold text-sm">3</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Compliance Issues</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Report suspected violations or safety concerns
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t">
-                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                    <p>
-                      All reports are reviewed within 48 hours. For urgent safety issues, please
-                      contact local authorities immediately.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Feedback Form */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Submit Feedback</CardTitle>
-                <CardDescription>
-                  Fill out the form below to share your concerns or feedback
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => handleChange("name", e.target.value)}
-                      placeholder="Your name"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleChange("email", e.target.value)}
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="location">Location/Mining Site</Label>
-                    <Input
-                      id="location"
-                      value={formData.location}
-                      onChange={(e) => handleChange("location", e.target.value)}
-                      placeholder="District or specific mining area"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="category">Feedback Category</Label>
-                    <Select value={formData.category} onValueChange={(value) => handleChange("category", value)}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select category" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="environmental">Environmental Concern</SelectItem>
-                        <SelectItem value="social">Social Impact</SelectItem>
-                        <SelectItem value="compliance">Compliance Issue</SelectItem>
-                        <SelectItem value="corruption">Corruption Report</SelectItem>
-                        <SelectItem value="general">General Feedback</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Your Message</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => handleChange("message", e.target.value)}
-                      placeholder="Please provide details about your feedback or concern..."
-                      className="min-h-[120px]"
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90">
-                    Submit Feedback
-                  </Button>
-                </form>
               </CardContent>
             </Card>
           </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Submit Your Feedback</CardTitle>
+              <CardDescription>
+                All information is confidential and will be reviewed by authorized personnel.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="title">Report Title *</Label>
+                  <Input
+                    id="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    placeholder="Brief title for your report"
+                    required
+                    disabled={!user}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="location">Location (Optional)</Label>
+                  <Input
+                    id="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    placeholder="District or mining site name"
+                    disabled={!user}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="category">Category *</Label>
+                  <Select 
+                    value={formData.category} 
+                    onValueChange={(value) => setFormData({ ...formData, category: value })}
+                    disabled={!user}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="environmental">Environmental Concern</SelectItem>
+                      <SelectItem value="social">Social Impact</SelectItem>
+                      <SelectItem value="certification">Certification Issue</SelectItem>
+                      <SelectItem value="other">Other Feedback</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="description">Your Message *</Label>
+                  <Textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    placeholder="Please describe your concern or feedback in detail..."
+                    rows={6}
+                    required
+                    disabled={!user}
+                  />
+                </div>
+
+                <Button type="submit" className="w-full" disabled={!user || loading}>
+                  <Send className="mr-2 h-4 w-4" />
+                  {loading ? 'Submitting...' : 'Submit Feedback'}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
