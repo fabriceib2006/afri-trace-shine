@@ -59,7 +59,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send OTP via email
     const emailResponse = await resend.emails.send({
-      from: "AfriTrace <fabriceib2005@gmail.com>",
+      from: "AfriTrace <onboarding@resend.dev>",
       to: [email],
       subject: "Your AfriTrace Verification Code",
       html: `
