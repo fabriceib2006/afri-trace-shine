@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Shield, Users, TrendingUp } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-mine.jpg";
 
 const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,13 +37,11 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-primary-foreground leading-tight">
-            Building Trust in Africa's
-            <span className="block text-secondary"> Mineral Future</span>
+            {t('hero.title')}
           </h1>
 
           <p className="text-lg md:text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Verify mineral origins, access transparent community data, and join the movement
-            for accountability in Rwanda's mining sector.
+            {t('hero.subtitle')}
           </p>
 
           {/* Quick Search */}
@@ -56,7 +56,7 @@ const HeroSection = () => {
               />
               <Button type="submit" size="lg" className="bg-secondary hover:bg-secondary/90">
                 <Search className="h-5 w-5 mr-2" />
-                Verify
+                {t('hero.cta')}
               </Button>
             </div>
           </form>

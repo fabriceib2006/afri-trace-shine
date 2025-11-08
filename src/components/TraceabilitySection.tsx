@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ const TraceabilitySection = () => {
   const [showResults, setShowResults] = useState(false);
   const [certificateData, setCertificateData] = useState<CertificateData | null>(null);
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,16 +69,16 @@ const TraceabilitySection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Mineral Traceability</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('traceability.title')}</h2>
             <p className="text-lg text-muted-foreground">
-              Verify the origin and certification of minerals with blockchain-backed transparency
+              {t('traceability.subtitle')}
             </p>
           </div>
 
           {/* Search Card */}
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle>Enter Batch or Certificate Code</CardTitle>
+              <CardTitle>{t('traceability.batchCode')}</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleVerify} className="flex gap-4">
@@ -89,7 +91,7 @@ const TraceabilitySection = () => {
                 />
                 <Button type="submit" className="w-full sm:w-auto" disabled={loading}>
                   <Search className="mr-2 h-4 w-4" />
-                  {loading ? 'Verifying...' : 'Verify'}
+                  {loading ? t('traceability.verifying') : t('traceability.verify')}
                 </Button>
               </form>
             </CardContent>

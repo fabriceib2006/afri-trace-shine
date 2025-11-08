@@ -1,13 +1,16 @@
 import { Menu, X, User, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
+  const { t } = useTranslation();
 
   const handleSignOut = async () => {
     await signOut();
@@ -33,33 +36,36 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <button onClick={() => scrollToSection('home')} className="text-foreground hover:text-primary transition-colors">
-              Home
+              {t('nav.home')}
             </button>
             <button onClick={() => scrollToSection('verify')} className="text-foreground hover:text-primary transition-colors">
-              Verify Minerals
+              {t('nav.verify')}
             </button>
             <button onClick={() => scrollToSection('community')} className="text-foreground hover:text-primary transition-colors">
-              Community Impact
+              {t('nav.community')}
             </button>
             <button onClick={() => scrollToSection('education')} className="text-foreground hover:text-primary transition-colors">
-              Education
+              {t('nav.education')}
             </button>
             <button onClick={() => scrollToSection('feedback-section')} className="text-foreground hover:text-primary transition-colors">
-              Report
+              {t('nav.report')}
             </button>
+            
+            <LanguageSwitcher />
+            
             {user ? (
               <>
                 <Button variant="ghost" onClick={() => navigate('/dashboard')} className="flex items-center">
                   <User className="mr-2 h-4 w-4" />
-                  Dashboard
+                  {t('nav.dashboard')}
                 </Button>
                 <Button variant="ghost" onClick={handleSignOut} className="flex items-center">
                   <LogOut className="mr-2 h-4 w-4" />
-                  Sign Out
+                  {t('nav.signOut')}
                 </Button>
               </>
             ) : (
-              <Button onClick={() => navigate('/auth')}>Sign In</Button>
+              <Button onClick={() => navigate('/auth')}>{t('nav.signIn')}</Button>
             )}
           </div>
 
@@ -77,35 +83,38 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-2">
+            <div className="mb-4">
+              <LanguageSwitcher />
+            </div>
             <button onClick={() => scrollToSection('home')} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
-              Home
+              {t('nav.home')}
             </button>
             <button onClick={() => scrollToSection('verify')} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
-              Verify Minerals
+              {t('nav.verify')}
             </button>
             <button onClick={() => scrollToSection('community')} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
-              Community Impact
+              {t('nav.community')}
             </button>
             <button onClick={() => scrollToSection('education')} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
-              Education
+              {t('nav.education')}
             </button>
             <button onClick={() => scrollToSection('feedback-section')} className="block w-full text-left py-2 text-foreground hover:text-primary transition-colors">
-              Report
+              {t('nav.report')}
             </button>
             {user ? (
               <>
                 <Button variant="ghost" onClick={() => { navigate('/dashboard'); setIsOpen(false); }} className="w-full justify-start">
                   <User className="mr-2 h-4 w-4" />
-                  Dashboard
+                  {t('nav.dashboard')}
                 </Button>
                 <Button variant="ghost" onClick={() => { handleSignOut(); setIsOpen(false); }} className="w-full justify-start">
                   <LogOut className="mr-2 h-4 w-4" />
-                  Sign Out
+                  {t('nav.signOut')}
                 </Button>
               </>
             ) : (
               <Button onClick={() => { navigate('/auth'); setIsOpen(false); }} className="w-full">
-                Sign In
+                {t('nav.signIn')}
               </Button>
             )}
           </div>

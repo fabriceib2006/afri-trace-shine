@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "verify": "Vérifier les Minéraux",
+    "community": "Impact Communautaire",
+    "education": "Éducation",
+    "report": "Signaler",
+    "dashboard": "Tableau de Bord",
+    "signIn": "Se Connecter",
+    "signOut": "Se Déconnecter"
+  },
+  "hero": {
+    "title": "Traçabilité des Minéraux du Rwanda avec Blockchain",
+    "subtitle": "Garantir l'approvisionnement éthique et la transparence dans le secteur minier du Rwanda grâce à une technologie de pointe",
+    "cta": "Vérifier un Certificat"
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "Inscription",
+    "email": "Email",
+    "password": "Mot de passe",
+    "fullName": "Nom Complet",
+    "confirmPassword": "Confirmer le Mot de Passe",
+    "loginButton": "Se Connecter",
+    "signupButton": "Créer un Compte",
+    "loggingIn": "Connexion en cours...",
+    "signingUp": "Création du compte...",
+    "emailSent": "Email de confirmation envoyé! Veuillez consulter votre boîte de réception pour vérifier votre adresse email.",
+    "loginSuccess": "Bienvenue!",
+    "signupSuccess": "Compte créé! Veuillez vérifier votre email pour confirmer votre compte avant de vous connecter."
+  },
+  "dashboard": {
+    "title": "Tableau de Bord",
+    "welcome": "Bienvenue sur votre tableau de bord"
+  },
+  "traceability": {
+    "title": "Traçabilité des Minéraux",
+    "subtitle": "Vérifier l'authenticité et l'origine des minéraux rwandais",
+    "batchCode": "Entrer le Code du Lot",
+    "verify": "Vérifier le Certificat",
+    "verifying": "Vérification..."
+  },
+  "community": {
+    "title": "Impact Communautaire",
+    "subtitle": "Soutenir les communautés locales grâce à des pratiques minières éthiques"
+  },
+  "education": {
+    "title": "Éducation et Ressources",
+    "subtitle": "En savoir plus sur l'approvisionnement responsable en minéraux"
+  },
+  "feedback": {
+    "title": "Signaler un Problème",
+    "subtitle": "Aidez-nous à améliorer la transparence",
+    "submit": "Envoyer le Rapport"
+  }
+}

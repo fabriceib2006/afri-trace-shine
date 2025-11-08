@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Home",
+    "verify": "Verify Minerals",
+    "community": "Community Impact",
+    "education": "Education",
+    "report": "Report",
+    "dashboard": "Dashboard",
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
+  },
+  "hero": {
+    "title": "Tracing Rwanda's Minerals with Blockchain",
+    "subtitle": "Ensuring ethical sourcing and transparency in Rwanda's mining sector through cutting-edge technology",
+    "cta": "Verify a Certificate"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "confirmPassword": "Confirm Password",
+    "loginButton": "Sign In",
+    "signupButton": "Create Account",
+    "loggingIn": "Signing in...",
+    "signingUp": "Creating account...",
+    "emailSent": "Confirmation email sent! Please check your inbox to verify your email address.",
+    "loginSuccess": "Welcome back!",
+    "signupSuccess": "Account created! Please check your email to confirm your account before signing in."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your dashboard"
+  },
+  "traceability": {
+    "title": "Mineral Traceability",
+    "subtitle": "Verify the authenticity and origin of Rwandan minerals",
+    "batchCode": "Enter Batch Code",
+    "verify": "Verify Certificate",
+    "verifying": "Verifying..."
+  },
+  "community": {
+    "title": "Community Impact",
+    "subtitle": "Supporting local communities through ethical mining practices"
+  },
+  "education": {
+    "title": "Education & Resources",
+    "subtitle": "Learn about responsible mineral sourcing"
+  },
+  "feedback": {
+    "title": "Report an Issue",
+    "subtitle": "Help us improve transparency",
+    "submit": "Submit Report"
+  }
+}
