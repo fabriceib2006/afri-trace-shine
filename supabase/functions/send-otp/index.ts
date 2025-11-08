@@ -2,7 +2,12 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.80.0";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const RESEND_KEY = Deno.env.get("RESEND_API_KEY") ?? "";
+console.log(
+  "send-otp: RESEND_API_KEY loaded:",
+  RESEND_KEY ? { prefix: RESEND_KEY.slice(0, 3), length: RESEND_KEY.length } : { missing: true }
+);
+const resend = new Resend(RESEND_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
