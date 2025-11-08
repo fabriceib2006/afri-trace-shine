@@ -2,19 +2,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { Users, Briefcase, Heart, Leaf } from "lucide-react";
 import communityImage from "@/assets/community-impact.jpg";
+import { useTranslation } from "react-i18next";
 
 const CommunitySection = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="community" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-primary mb-4">
-              Community & ESG Impact
+              {t('community.title')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Transparent reporting on environmental, social, and governance metrics that matter
-              to local communities
+              {t('community.subtitle')}
             </p>
           </div>
 
@@ -23,7 +25,7 @@ const CommunitySection = () => {
             <div className="rounded-xl overflow-hidden shadow-xl">
               <img
                 src={communityImage}
-                alt="Community development"
+                alt={t('community.imageAlt')}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -36,19 +38,19 @@ const CommunitySection = () => {
                     <Briefcase className="h-6 w-6 text-sustainability" />
                   </div>
                   <div>
-                    <CardTitle>Local Employment</CardTitle>
-                    <CardDescription>Jobs created in mining communities</CardDescription>
+                    <CardTitle>{t('community.localEmployment')}</CardTitle>
+                    <CardDescription>{t('community.jobsCreated')}</CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Direct Jobs</span>
+                      <span className="text-sm font-medium">{t('community.directJobs')}</span>
                       <span className="text-2xl font-bold text-sustainability">3,284</span>
                     </div>
                     <Progress value={85} className="h-2" />
                     <p className="text-sm text-muted-foreground">
-                      85% local hiring rate across all sites
+                      85% {t('community.localHiring')}
                     </p>
                   </div>
                 </CardContent>
@@ -60,19 +62,19 @@ const CommunitySection = () => {
                     <Heart className="h-6 w-6 text-trust" />
                   </div>
                   <div>
-                    <CardTitle>Community Investment</CardTitle>
-                    <CardDescription>Projects funded this year</CardDescription>
+                    <CardTitle>{t('community.communityInvestment')}</CardTitle>
+                    <CardDescription>{t('community.projectsFunded')}</CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Total Investment</span>
+                      <span className="text-sm font-medium">{t('community.totalInvestment')}</span>
                       <span className="text-2xl font-bold text-trust">$2.8M</span>
                     </div>
                     <Progress value={92} className="h-2" />
                     <p className="text-sm text-muted-foreground">
-                      156 community projects: schools, clinics, water systems
+                      156 {t('community.projectsDescription')}
                     </p>
                   </div>
                 </CardContent>
@@ -88,14 +90,14 @@ const CommunitySection = () => {
                   <div className="p-2 rounded-lg bg-sustainability/10">
                     <Leaf className="h-5 w-5 text-sustainability" />
                   </div>
-                  <CardTitle className="text-lg">Environmental Compliance</CardTitle>
+                  <CardTitle className="text-lg">{t('community.environmentalCompliance')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-sustainability mb-2">96%</div>
                 <Progress value={96} className="h-2 mb-2" />
                 <p className="text-sm text-muted-foreground">
-                  Sites meeting environmental standards
+                  {t('community.sitesStandards')}
                 </p>
               </CardContent>
             </Card>
@@ -106,14 +108,14 @@ const CommunitySection = () => {
                   <div className="p-2 rounded-lg bg-secondary/10">
                     <Users className="h-5 w-5 text-secondary" />
                   </div>
-                  <CardTitle className="text-lg">Women Empowerment</CardTitle>
+                  <CardTitle className="text-lg">{t('community.womenEmpowerment')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-secondary mb-2">42%</div>
                 <Progress value={42} className="h-2 mb-2" />
                 <p className="text-sm text-muted-foreground">
-                  Women in mining workforce
+                  {t('community.womenWorkforce')}
                 </p>
               </CardContent>
             </Card>
@@ -124,14 +126,14 @@ const CommunitySection = () => {
                   <div className="p-2 rounded-lg bg-primary/10">
                     <Heart className="h-5 w-5 text-primary" />
                   </div>
-                  <CardTitle className="text-lg">Local Spending</CardTitle>
+                  <CardTitle className="text-lg">{t('community.localSpending')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="text-3xl font-bold text-primary mb-2">78%</div>
                 <Progress value={78} className="h-2 mb-2" />
                 <p className="text-sm text-muted-foreground">
-                  Procurement from local suppliers
+                  {t('community.localSuppliers')}
                 </p>
               </CardContent>
             </Card>

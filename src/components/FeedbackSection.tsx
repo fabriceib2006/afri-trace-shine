@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from "react-i18next";
 
 const feedbackSchema = z.object({
   title: z.string().trim().min(3, { message: "Title must be at least 3 characters" }).max(200),
@@ -20,6 +21,7 @@ const feedbackSchema = z.object({
 });
 
 const FeedbackSection = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
@@ -31,7 +33,6 @@ const FeedbackSection = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Scroll to section if user is logged in (coming from login redirect)
     if (user) {
       const section = document.getElementById('feedback-section');
       if (section) {
@@ -44,7 +45,7 @@ const FeedbackSection = () => {
     e.preventDefault();
     
     if (!user) {
-      toast.error("Please log in to submit feedback");
+      toast.error(t('feedback.signInMessage'));
       navigate('/auth');
       return;
     }
@@ -97,15 +98,15 @@ const FeedbackSection = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div>
-            <h2 className="text-4xl font-bold mb-6">Report & Feedback</h2>
+            <h2 className="text-4xl font-bold mb-6">{t('feedback.title')}</h2>
             {!user && (
               <Card className="mb-4 border-blue-500">
                 <CardContent className="pt-6">
                   <p className="text-sm mb-4">
-                    <strong>Sign in required:</strong> You must be logged in to submit feedback.
+                    <strong>{t('feedback.signInRequired')}</strong> {t('feedback.signInMessage')}
                   </p>
                   <Button onClick={() => navigate('/auth')} className="w-full">
-                    Sign In or Create Account
+                    {t('feedback.signInButton')}
                   </Button>
                 </CardContent>
               </Card>
@@ -114,29 +115,29 @@ const FeedbackSection = () => {
               <CardHeader>
                 <div className="flex items-center mb-2">
                   <AlertCircle className="h-6 w-6 text-primary mr-2" />
-                  <CardTitle>Why Your Report Matters</CardTitle>
+                  <CardTitle>{t('feedback.whyMatters')}</CardTitle>
                 </div>
                 <CardDescription>
-                  Your feedback helps ensure transparency and accountability in Rwanda's mining sector.
+                  {t('feedback.whyMattersDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h4 className="font-semibold mb-2">What You Can Report:</h4>
+                  <h4 className="font-semibold mb-2">{t('feedback.whatToReport')}</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• Environmental concerns or violations</li>
-                    <li>• Social impact on local communities</li>
-                    <li>• Certification irregularities</li>
-                    <li>• General feedback on mining operations</li>
+                    <li>• {t('feedback.environmental')}</li>
+                    <li>• {t('feedback.social')}</li>
+                    <li>• {t('feedback.certificationIssues')}</li>
+                    <li>• {t('feedback.general')}</li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">How It Works:</h4>
+                  <h4 className="font-semibold mb-2">{t('feedback.howItWorks')}</h4>
                   <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
-                    <li>Submit your concern or feedback</li>
-                    <li>Our team reviews all submissions</li>
-                    <li>Appropriate action is taken</li>
-                    <li>You receive updates on progress</li>
+                    <li>{t('feedback.step1')}</li>
+                    <li>{t('feedback.step2')}</li>
+                    <li>{t('feedback.step3')}</li>
+                    <li>{t('feedback.step4')}</li>
                   </ol>
                 </div>
               </CardContent>
@@ -145,62 +146,62 @@ const FeedbackSection = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Submit Your Feedback</CardTitle>
+              <CardTitle>{t('feedback.formTitle')}</CardTitle>
               <CardDescription>
-                All information is confidential and will be reviewed by authorized personnel.
+                {t('feedback.formDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="title">Report Title *</Label>
+                  <Label htmlFor="title">{t('feedback.reportTitle')} *</Label>
                   <Input
                     id="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Brief title for your report"
+                    placeholder={t('feedback.reportTitlePlaceholder')}
                     required
                     disabled={!user}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="location">Location (Optional)</Label>
+                  <Label htmlFor="location">{t('feedback.location')}</Label>
                   <Input
                     id="location"
                     value={formData.location}
                     onChange={handleChange}
-                    placeholder="District or mining site name"
+                    placeholder={t('feedback.locationPlaceholder')}
                     disabled={!user}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="category">Category *</Label>
+                  <Label htmlFor="category">{t('feedback.category')} *</Label>
                   <Select 
                     value={formData.category} 
                     onValueChange={(value) => setFormData({ ...formData, category: value })}
                     disabled={!user}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a category" />
+                      <SelectValue placeholder={t('feedback.selectCategory')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="environmental">Environmental Concern</SelectItem>
-                      <SelectItem value="social">Social Impact</SelectItem>
-                      <SelectItem value="certification">Certification Issue</SelectItem>
-                      <SelectItem value="other">Other Feedback</SelectItem>
+                      <SelectItem value="environmental">{t('feedback.categories.environmental')}</SelectItem>
+                      <SelectItem value="social">{t('feedback.categories.social')}</SelectItem>
+                      <SelectItem value="certification">{t('feedback.categories.certification')}</SelectItem>
+                      <SelectItem value="other">{t('feedback.categories.other')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">Your Message *</Label>
+                  <Label htmlFor="description">{t('feedback.message')} *</Label>
                   <Textarea
                     id="description"
                     value={formData.description}
                     onChange={handleChange}
-                    placeholder="Please describe your concern or feedback in detail..."
+                    placeholder={t('feedback.messagePlaceholder')}
                     rows={6}
                     required
                     disabled={!user}
@@ -209,7 +210,7 @@ const FeedbackSection = () => {
 
                 <Button type="submit" className="w-full" disabled={!user || loading}>
                   <Send className="mr-2 h-4 w-4" />
-                  {loading ? 'Submitting...' : 'Submit Feedback'}
+                  {loading ? t('feedback.submitting') : t('feedback.submitButton')}
                 </Button>
               </form>
             </CardContent>

@@ -5,14 +5,150 @@
     "community": "Community Impact",
     "education": "Education",
     "report": "Report",
-    "dashboard": "Dashboard",
     "signIn": "Sign In",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "dashboard": "Dashboard"
   },
   "hero": {
-    "title": "Tracing Rwanda's Minerals with Blockchain",
-    "subtitle": "Ensuring ethical sourcing and transparency in Rwanda's mining sector through cutting-edge technology",
-    "cta": "Verify a Certificate"
+    "title": "Traceability & Trust in Africa's Mineral Future",
+    "subtitle": "Empowering transparency from mine to market through blockchain technology and community engagement",
+    "verifyCertificate": "Verify Certificate"
+  },
+  "traceability": {
+    "title": "Mineral Traceability",
+    "subtitle": "Verify the authenticity and origin of Rwandan minerals",
+    "batchCode": "Enter Batch Code",
+    "verify": "Verify Certificate",
+    "verifying": "Verifying..."
+  },
+  "community": {
+    "title": "Community & ESG Impact",
+    "subtitle": "Transparent reporting on environmental, social, and governance metrics that matter to local communities",
+    "imageAlt": "Community development",
+    "localEmployment": "Local Employment",
+    "jobsCreated": "Jobs created in mining communities",
+    "directJobs": "Direct Jobs",
+    "localHiring": "local hiring rate across all sites",
+    "communityInvestment": "Community Investment",
+    "projectsFunded": "Projects funded this year",
+    "totalInvestment": "Total Investment",
+    "projectsDescription": "community projects: schools, clinics, water systems",
+    "environmentalCompliance": "Environmental Compliance",
+    "sitesStandards": "Sites meeting environmental standards",
+    "womenEmpowerment": "Women Empowerment",
+    "womenWorkforce": "Women in mining workforce",
+    "localSpending": "Local Spending",
+    "localSuppliers": "Procurement from local suppliers"
+  },
+  "education": {
+    "title": "Educational Hub",
+    "subtitle": "Explore resources about mineral traceability, geology, and community impact",
+    "resources": {
+      "blockchain": {
+        "title": "Understanding Mineral Traceability",
+        "description": "Learn how blockchain technology ensures transparency in the mineral supply chain from mine to market",
+        "type": "Article"
+      },
+      "heritage": {
+        "title": "Rwanda's Mining Heritage",
+        "description": "Documentary exploring sustainable mining practices and their impact on local communities",
+        "type": "Video"
+      },
+      "certification": {
+        "title": "Conflict-Free Certification",
+        "description": "Understanding ICGLR standards and the certification process for responsible mineral sourcing",
+        "type": "Guide"
+      },
+      "esg": {
+        "title": "ESG in Mining Operations",
+        "description": "Environmental, social, and governance frameworks driving positive change in African mining",
+        "type": "Report"
+      },
+      "geology": {
+        "title": "Geology & Mineral Formation",
+        "description": "Introduction to African geological formations and mineral deposit characteristics",
+        "type": "Course"
+      },
+      "stories": {
+        "title": "Community Impact Stories",
+        "description": "Real stories from mining communities showcasing economic and social transformation",
+        "type": "Documentary"
+      }
+    },
+    "topics": {
+      "blockchain": "Blockchain",
+      "supplyChain": "Supply Chain",
+      "transparency": "Transparency",
+      "sustainability": "Sustainability",
+      "community": "Community",
+      "heritage": "Heritage",
+      "icglr": "ICGLR",
+      "certification": "Certification",
+      "ethics": "Ethics",
+      "esg": "ESG",
+      "governance": "Governance",
+      "impact": "Impact",
+      "geology": "Geology",
+      "science": "Science",
+      "education": "Education",
+      "stories": "Stories"
+    },
+    "accessResource": "Access Resource",
+    "learnMore": "Want to Learn More?",
+    "learnMoreDescription": "Access our complete library of educational materials, training programs, and community workshops about responsible mining practices.",
+    "exploreLibrary": "Explore Full Library"
+  },
+  "feedback": {
+    "title": "Report & Feedback",
+    "signInRequired": "Sign in required:",
+    "signInMessage": "You must be logged in to submit feedback.",
+    "signInButton": "Sign In or Create Account",
+    "whyMatters": "Why Your Report Matters",
+    "whyMattersDescription": "Your feedback helps ensure transparency and accountability in Rwanda's mining sector.",
+    "whatToReport": "What You Can Report:",
+    "environmental": "Environmental concerns or violations",
+    "social": "Social impact on local communities",
+    "certificationIssues": "Certification irregularities",
+    "general": "General feedback on mining operations",
+    "howItWorks": "How It Works:",
+    "step1": "Submit your concern or feedback",
+    "step2": "Our team reviews all submissions",
+    "step3": "Appropriate action is taken",
+    "step4": "You receive updates on progress",
+    "formTitle": "Submit Your Feedback",
+    "formDescription": "All information is confidential and will be reviewed by authorized personnel.",
+    "reportTitle": "Report Title",
+    "reportTitlePlaceholder": "Brief title for your report",
+    "location": "Location (Optional)",
+    "locationPlaceholder": "District or mining site name",
+    "category": "Category",
+    "selectCategory": "Select a category",
+    "categories": {
+      "environmental": "Environmental Concern",
+      "social": "Social Impact",
+      "certification": "Certification Issue",
+      "other": "Other Feedback"
+    },
+    "message": "Your Message",
+    "messagePlaceholder": "Please describe your concern or feedback in detail...",
+    "submitButton": "Submit Feedback",
+    "submitting": "Submitting..."
+  },
+  "footer": {
+    "tagline": "Building trust in Africa's mineral future through transparency and community engagement.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "verify": "Verify Minerals",
+    "community": "Community Impact",
+    "education": "Education Hub",
+    "resources": "Resources",
+    "apiDocs": "API Documentation",
+    "dataStandards": "Data Standards",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact",
+    "copyright": "AfriTrace. All rights reserved.",
+    "builtFor": "Built for transparency, powered by community."
   },
   "auth": {
     "login": "Login",
@@ -32,25 +168,5 @@
   "dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome to your dashboard"
-  },
-  "traceability": {
-    "title": "Mineral Traceability",
-    "subtitle": "Verify the authenticity and origin of Rwandan minerals",
-    "batchCode": "Enter Batch Code",
-    "verify": "Verify Certificate",
-    "verifying": "Verifying..."
-  },
-  "community": {
-    "title": "Community Impact",
-    "subtitle": "Supporting local communities through ethical mining practices"
-  },
-  "education": {
-    "title": "Education & Resources",
-    "subtitle": "Learn about responsible mineral sourcing"
-  },
-  "feedback": {
-    "title": "Report an Issue",
-    "subtitle": "Help us improve transparency",
-    "submit": "Submit Report"
   }
 }

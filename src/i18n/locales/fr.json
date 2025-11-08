@@ -5,14 +5,150 @@
     "community": "Impact Communautaire",
     "education": "Éducation",
     "report": "Signaler",
-    "dashboard": "Tableau de Bord",
     "signIn": "Se Connecter",
-    "signOut": "Se Déconnecter"
+    "signOut": "Se Déconnecter",
+    "dashboard": "Tableau de Bord"
   },
   "hero": {
-    "title": "Traçabilité des Minéraux du Rwanda avec Blockchain",
-    "subtitle": "Garantir l'approvisionnement éthique et la transparence dans le secteur minier du Rwanda grâce à une technologie de pointe",
-    "cta": "Vérifier un Certificat"
+    "title": "Traçabilité et Confiance dans l'Avenir Minéral de l'Afrique",
+    "subtitle": "Favoriser la transparence de la mine au marché grâce à la technologie blockchain et l'engagement communautaire",
+    "verifyCertificate": "Vérifier le Certificat"
+  },
+  "traceability": {
+    "title": "Traçabilité des Minéraux",
+    "subtitle": "Vérifier l'authenticité et l'origine des minéraux rwandais",
+    "batchCode": "Entrer le Code du Lot",
+    "verify": "Vérifier le Certificat",
+    "verifying": "Vérification..."
+  },
+  "community": {
+    "title": "Impact Communautaire et ESG",
+    "subtitle": "Rapports transparents sur les indicateurs environnementaux, sociaux et de gouvernance importants pour les communautés locales",
+    "imageAlt": "Développement communautaire",
+    "localEmployment": "Emploi Local",
+    "jobsCreated": "Emplois créés dans les communautés minières",
+    "directJobs": "Emplois Directs",
+    "localHiring": "taux d'embauche locale sur tous les sites",
+    "communityInvestment": "Investissement Communautaire",
+    "projectsFunded": "Projets financés cette année",
+    "totalInvestment": "Investissement Total",
+    "projectsDescription": "projets communautaires : écoles, cliniques, systèmes d'eau",
+    "environmentalCompliance": "Conformité Environnementale",
+    "sitesStandards": "Sites respectant les normes environnementales",
+    "womenEmpowerment": "Autonomisation des Femmes",
+    "womenWorkforce": "Femmes dans la main-d'œuvre minière",
+    "localSpending": "Dépenses Locales",
+    "localSuppliers": "Approvisionnement auprès de fournisseurs locaux"
+  },
+  "education": {
+    "title": "Centre Éducatif",
+    "subtitle": "Explorez des ressources sur la traçabilité des minéraux, la géologie et l'impact communautaire",
+    "resources": {
+      "blockchain": {
+        "title": "Comprendre la Traçabilité des Minéraux",
+        "description": "Découvrez comment la technologie blockchain assure la transparence dans la chaîne d'approvisionnement minérale de la mine au marché",
+        "type": "Article"
+      },
+      "heritage": {
+        "title": "Patrimoine Minier du Rwanda",
+        "description": "Documentaire explorant les pratiques minières durables et leur impact sur les communautés locales",
+        "type": "Vidéo"
+      },
+      "certification": {
+        "title": "Certification Sans Conflit",
+        "description": "Comprendre les normes ICGLR et le processus de certification pour l'approvisionnement responsable en minéraux",
+        "type": "Guide"
+      },
+      "esg": {
+        "title": "ESG dans les Opérations Minières",
+        "description": "Cadres environnementaux, sociaux et de gouvernance favorisant un changement positif dans l'exploitation minière africaine",
+        "type": "Rapport"
+      },
+      "geology": {
+        "title": "Géologie et Formation des Minéraux",
+        "description": "Introduction aux formations géologiques africaines et aux caractéristiques des gisements minéraux",
+        "type": "Cours"
+      },
+      "stories": {
+        "title": "Histoires d'Impact Communautaire",
+        "description": "Histoires réelles de communautés minières présentant une transformation économique et sociale",
+        "type": "Documentaire"
+      }
+    },
+    "topics": {
+      "blockchain": "Blockchain",
+      "supplyChain": "Chaîne d'Approvisionnement",
+      "transparency": "Transparence",
+      "sustainability": "Durabilité",
+      "community": "Communauté",
+      "heritage": "Patrimoine",
+      "icglr": "ICGLR",
+      "certification": "Certification",
+      "ethics": "Éthique",
+      "esg": "ESG",
+      "governance": "Gouvernance",
+      "impact": "Impact",
+      "geology": "Géologie",
+      "science": "Science",
+      "education": "Éducation",
+      "stories": "Histoires"
+    },
+    "accessResource": "Accéder à la Ressource",
+    "learnMore": "Vous Voulez en Savoir Plus?",
+    "learnMoreDescription": "Accédez à notre bibliothèque complète de matériel éducatif, de programmes de formation et d'ateliers communautaires sur les pratiques minières responsables.",
+    "exploreLibrary": "Explorer la Bibliothèque Complète"
+  },
+  "feedback": {
+    "title": "Rapport et Commentaires",
+    "signInRequired": "Connexion requise:",
+    "signInMessage": "Vous devez être connecté pour soumettre des commentaires.",
+    "signInButton": "Se Connecter ou Créer un Compte",
+    "whyMatters": "Pourquoi Votre Rapport Est Important",
+    "whyMattersDescription": "Vos commentaires contribuent à garantir la transparence et la responsabilité dans le secteur minier rwandais.",
+    "whatToReport": "Ce Que Vous Pouvez Signaler:",
+    "environmental": "Préoccupations ou violations environnementales",
+    "social": "Impact social sur les communautés locales",
+    "certificationIssues": "Irrégularités de certification",
+    "general": "Commentaires généraux sur les opérations minières",
+    "howItWorks": "Comment Ça Marche:",
+    "step1": "Soumettez votre préoccupation ou commentaire",
+    "step2": "Notre équipe examine toutes les soumissions",
+    "step3": "Des mesures appropriées sont prises",
+    "step4": "Vous recevez des mises à jour sur les progrès",
+    "formTitle": "Soumettre Vos Commentaires",
+    "formDescription": "Toutes les informations sont confidentielles et seront examinées par le personnel autorisé.",
+    "reportTitle": "Titre du Rapport",
+    "reportTitlePlaceholder": "Titre bref de votre rapport",
+    "location": "Lieu (Optionnel)",
+    "locationPlaceholder": "Nom du district ou du site minier",
+    "category": "Catégorie",
+    "selectCategory": "Sélectionnez une catégorie",
+    "categories": {
+      "environmental": "Préoccupation Environnementale",
+      "social": "Impact Social",
+      "certification": "Problème de Certification",
+      "other": "Autres Commentaires"
+    },
+    "message": "Votre Message",
+    "messagePlaceholder": "Veuillez décrire votre préoccupation ou commentaire en détail...",
+    "submitButton": "Soumettre les Commentaires",
+    "submitting": "Soumission..."
+  },
+  "footer": {
+    "tagline": "Construire la confiance dans l'avenir minéral de l'Afrique grâce à la transparence et l'engagement communautaire.",
+    "quickLinks": "Liens Rapides",
+    "home": "Accueil",
+    "verify": "Vérifier les Minéraux",
+    "community": "Impact Communautaire",
+    "education": "Centre Éducatif",
+    "resources": "Ressources",
+    "apiDocs": "Documentation API",
+    "dataStandards": "Normes de Données",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "contact": "Contact",
+    "copyright": "AfriTrace. Tous droits réservés.",
+    "builtFor": "Construit pour la transparence, propulsé par la communauté."
   },
   "auth": {
     "login": "Connexion",
@@ -32,25 +168,5 @@
   "dashboard": {
     "title": "Tableau de Bord",
     "welcome": "Bienvenue sur votre tableau de bord"
-  },
-  "traceability": {
-    "title": "Traçabilité des Minéraux",
-    "subtitle": "Vérifier l'authenticité et l'origine des minéraux rwandais",
-    "batchCode": "Entrer le Code du Lot",
-    "verify": "Vérifier le Certificat",
-    "verifying": "Vérification..."
-  },
-  "community": {
-    "title": "Impact Communautaire",
-    "subtitle": "Soutenir les communautés locales grâce à des pratiques minières éthiques"
-  },
-  "education": {
-    "title": "Éducation et Ressources",
-    "subtitle": "En savoir plus sur l'approvisionnement responsable en minéraux"
-  },
-  "feedback": {
-    "title": "Signaler un Problème",
-    "subtitle": "Aidez-nous à améliorer la transparence",
-    "submit": "Envoyer le Rapport"
   }
 }
