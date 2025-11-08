@@ -8,6 +8,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { toast } from 'sonner';
 import { z } from 'zod';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
+import { supabase } from '@/integrations/supabase/client';
+import { Loader2 } from 'lucide-react';
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -28,6 +31,9 @@ const Auth = () => {
   const navigate = useNavigate();
   const { signIn, signUp, user } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [showOTPInput, setShowOTPInput] = useState(false);
+  const [otpEmail, setOtpEmail] = useState('');
+  const [otp, setOtp] = useState('');
 
   // Redirect if already logged in
   if (user) {
@@ -77,7 +83,48 @@ const Auth = () => {
       signupSchema.parse(signupForm);
       setLoading(true);
       
-      const { error } = await signUp(signupForm.email, signupForm.password, signupForm.fullName);
+      // Send OTP first
+      const { data: otpData, error: otpError } = await supabase.functions.invoke('send-otp', {
+        body: { email: signupForm.email }
+      });
+
+      if (otpError) {
+        toast.error('Failed to send verification code');
+        return;
+      }
+
+      setOtpEmail(signupForm.email);
+      setShowOTPInput(true);
+      toast.success('Verification code sent to your email!');
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        toast.error(err.errors[0].message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyOTP = async () => {
+    if (otp.length !== 6) {
+      toast.error('Please enter a valid 6-digit code');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // Verify OTP
+      const { data: verifyData, error: verifyError } = await supabase.functions.invoke('verify-otp', {
+        body: { email: otpEmail, code: otp }
+      });
+
+      if (verifyError) {
+        toast.error('Invalid or expired verification code');
+        return;
+      }
+
+      // Now create the account
+      const { error } = await signUp(otpEmail, signupForm.password, signupForm.fullName);
       
       if (error) {
         if (error.message.includes('already registered')) {
@@ -87,12 +134,11 @@ const Auth = () => {
         }
       } else {
         toast.success('Account created successfully!');
+        setShowOTPInput(false);
         navigate('/');
       }
     } catch (err) {
-      if (err instanceof z.ZodError) {
-        toast.error(err.errors[0].message);
-      }
+      toast.error('Verification failed');
     } finally {
       setLoading(false);
     }
@@ -106,6 +152,56 @@ const Auth = () => {
           <CardDescription>Mineral Transparency Platform</CardDescription>
         </CardHeader>
         <CardContent>
+          {showOTPInput ? (
+            <div className="space-y-4">
+              <div className="text-center space-y-2">
+                <h3 className="text-lg font-semibold">Verify Your Email</h3>
+                <p className="text-sm text-muted-foreground">
+                  Enter the 6-digit code sent to {otpEmail}
+                </p>
+              </div>
+              
+              <div className="flex justify-center">
+                <InputOTP maxLength={6} value={otp} onChange={setOtp}>
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+
+              <div className="space-y-2">
+                <Button 
+                  onClick={handleVerifyOTP} 
+                  className="w-full" 
+                  disabled={loading || otp.length !== 6}
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Verifying...
+                    </>
+                  ) : (
+                    'Verify & Create Account'
+                  )}
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={() => {
+                    setShowOTPInput(false);
+                    setOtp('');
+                  }}
+                >
+                  Back
+                </Button>
+              </div>
+            </div>
+          ) : (
           <Tabs defaultValue="login" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="login">Login</TabsTrigger>
@@ -194,6 +290,7 @@ const Auth = () => {
               </form>
             </TabsContent>
           </Tabs>
+          )}
         </CardContent>
       </Card>
     </div>

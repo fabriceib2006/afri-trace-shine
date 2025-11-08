@@ -46,22 +46,22 @@ const Footer = () => {
             <h3 className="font-heading font-bold mb-4">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <a href="/api-docs" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   API Documentation
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <a href="/data-standards" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   Data Standards
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <a href="/privacy" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <a href="/terms" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   Terms of Use
                 </a>
               </li>

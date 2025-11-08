@@ -7,34 +7,56 @@ const EducationSection = () => {
     {
       icon: BookOpen,
       title: "Understanding Mineral Traceability",
-      description: "Learn how blockchain technology ensures transparency in the mineral supply chain",
+      description: "Learn how blockchain technology ensures transparency in the mineral supply chain from mine to market",
       type: "Article",
       color: "text-trust",
-      bgColor: "bg-trust/10"
+      bgColor: "bg-trust/10",
+      topics: ["Blockchain", "Supply Chain", "Transparency"]
     },
     {
       icon: Video,
       title: "Rwanda's Mining Heritage",
-      description: "Documentary on sustainable mining practices and community development",
+      description: "Documentary exploring sustainable mining practices and their impact on local communities",
       type: "Video",
       color: "text-secondary",
-      bgColor: "bg-secondary/10"
+      bgColor: "bg-secondary/10",
+      topics: ["Sustainability", "Community", "Heritage"]
     },
     {
       icon: FileText,
-      title: "Geology 101: African Minerals",
-      description: "Basic introduction to mineral formation and geological processes",
+      title: "Conflict-Free Certification",
+      description: "Understanding ICGLR standards and the certification process for responsible mineral sourcing",
       type: "Guide",
       color: "text-sustainability",
-      bgColor: "bg-sustainability/10"
+      bgColor: "bg-sustainability/10",
+      topics: ["ICGLR", "Certification", "Ethics"]
     },
     {
       icon: FileText,
-      title: "ESG in Mining",
-      description: "How environmental and social governance creates lasting community benefit",
+      title: "ESG in Mining Operations",
+      description: "Environmental, social, and governance frameworks driving positive change in African mining",
       type: "Report",
       color: "text-primary",
-      bgColor: "bg-primary/10"
+      bgColor: "bg-primary/10",
+      topics: ["ESG", "Governance", "Impact"]
+    },
+    {
+      icon: BookOpen,
+      title: "Geology & Mineral Formation",
+      description: "Introduction to African geological formations and mineral deposit characteristics",
+      type: "Course",
+      color: "text-trust",
+      bgColor: "bg-trust/10",
+      topics: ["Geology", "Science", "Education"]
+    },
+    {
+      icon: Video,
+      title: "Community Impact Stories",
+      description: "Real stories from mining communities showcasing economic and social transformation",
+      type: "Documentary",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
+      topics: ["Community", "Impact", "Stories"]
     }
   ];
 
@@ -51,7 +73,7 @@ const EducationSection = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource, index) => {
               const Icon = resource.icon;
               return (
@@ -72,12 +94,22 @@ const EducationSection = () => {
                           <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                         <CardTitle className="text-xl mb-2">{resource.title}</CardTitle>
-                        <CardDescription>{resource.description}</CardDescription>
+                        <CardDescription className="mb-3">{resource.description}</CardDescription>
+                        <div className="flex flex-wrap gap-1">
+                          {resource.topics.map((topic, i) => (
+                            <span
+                              key={i}
+                              className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground"
+                            >
+                              {topic}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       Access Resource
                     </Button>
                   </CardContent>
