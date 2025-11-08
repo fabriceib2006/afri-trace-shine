@@ -10,5 +10,15 @@ export const LanguageSwitcher = () => {
     i18n.changeLanguage(newLang);
     localStorage.setItem('language', newLang);
   };
-  return;
+  return (
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={toggleLanguage}
+      className="flex items-center gap-2"
+    >
+      <Globe className="h-4 w-4" />
+      <span className="uppercase">{i18n.language}</span>
+    </Button>
+  );
 };

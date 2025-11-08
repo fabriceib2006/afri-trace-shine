@@ -34,43 +34,45 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-foreground hover:text-primary transition-colors">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <button onClick={() => scrollToSection('home')} className="text-foreground hover:text-primary transition-colors text-sm xl:text-base whitespace-nowrap">
               {t('nav.home')}
             </button>
-            <button onClick={() => scrollToSection('verify')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('verify')} className="text-foreground hover:text-primary transition-colors text-sm xl:text-base whitespace-nowrap">
               {t('nav.verify')}
             </button>
-            <button onClick={() => scrollToSection('community')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('community')} className="text-foreground hover:text-primary transition-colors text-sm xl:text-base whitespace-nowrap">
               {t('nav.community')}
             </button>
-            <button onClick={() => scrollToSection('education')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('education')} className="text-foreground hover:text-primary transition-colors text-sm xl:text-base whitespace-nowrap">
               {t('nav.education')}
             </button>
-            <button onClick={() => scrollToSection('feedback-section')} className="text-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('feedback-section')} className="text-foreground hover:text-primary transition-colors text-sm xl:text-base whitespace-nowrap">
               {t('nav.report')}
             </button>
             
-            <LanguageSwitcher />
+            <div className="pl-2 xl:pl-4 border-l border-border">
+              <LanguageSwitcher />
+            </div>
             
             {user ? (
-              <>
-                <Button variant="ghost" onClick={() => navigate('/dashboard')} className="flex items-center">
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')} className="flex items-center">
                   <User className="mr-2 h-4 w-4" />
-                  {t('nav.dashboard')}
+                  <span className="hidden xl:inline">{t('nav.dashboard')}</span>
                 </Button>
-                <Button variant="ghost" onClick={handleSignOut} className="flex items-center">
+                <Button variant="ghost" size="sm" onClick={handleSignOut} className="flex items-center">
                   <LogOut className="mr-2 h-4 w-4" />
-                  {t('nav.signOut')}
+                  <span className="hidden xl:inline">{t('nav.signOut')}</span>
                 </Button>
-              </>
+              </div>
             ) : (
-              <Button onClick={() => navigate('/auth')}>{t('nav.signIn')}</Button>
+              <Button size="sm" onClick={() => navigate('/auth')}>{t('nav.signIn')}</Button>
             )}
           </div>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-foreground hover:text-primary transition-colors"
@@ -82,7 +84,7 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2">
+          <div className="lg:hidden py-4 space-y-2">
             <div className="mb-4">
               <LanguageSwitcher />
             </div>
