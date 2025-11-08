@@ -163,10 +163,22 @@
     "signingUp": "Création du compte...",
     "emailSent": "Email de confirmation envoyé! Veuillez consulter votre boîte de réception pour vérifier votre adresse email.",
     "loginSuccess": "Bienvenue!",
-    "signupSuccess": "Compte créé! Veuillez vérifier votre email pour confirmer votre compte avant de vous connecter."
+    "signupSuccess": "Compte créé avec succès! Vous pouvez maintenant vous connecter."
   },
   "dashboard": {
-    "title": "Tableau de Bord",
-    "welcome": "Bienvenue sur votre tableau de bord"
+    "title": "Mon Tableau de bord",
+    "citizenDashboard": "Tableau de bord Citoyen",
+    "adminDashboard": "Tableau de bord Administrateur",
+    "welcome": "Bienvenue sur votre tableau de bord",
+    "myReports": "Mes Rapports de Feedback",
+    "trackReports": "Suivez l'état de vos rapports soumis",
+    "noReports": "Vous n'avez pas encore soumis de rapports.",
+    "loadingReports": "Chargement des rapports...",
+    "adminAccess": "Accès Administrateur",
+    "adminAccessDesc": "Vous avez un accès complet pour gérer les feedbacks et les données système",
+    "goToAdmin": "Aller au Panneau Admin",
+    "reportSubmitted": "Soumis",
+    "reportLocation": "Emplacement",
+    "adminResponse": "Réponse de l'Admin"
   }
 }

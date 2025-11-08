@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -21,6 +22,7 @@ interface FeedbackReport {
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user, userRole, loading } = useAuth();
   const [feedbackReports, setFeedbackReports] = useState<FeedbackReport[]>([]);
   const [fetchingReports, setFetchingReports] = useState(true);
@@ -32,16 +34,23 @@ const Dashboard = () => {
   }, [user, loading, navigate]);
 
   useEffect(() => {
-    if (user) {
+    if (user && userRole) {
       fetchFeedbackReports();
     }
-  }, [user]);
+  }, [user, userRole]);
 
   const fetchFeedbackReports = async () => {
-    const { data, error } = await supabase
+    let query = supabase
       .from('feedback_reports')
       .select('*')
       .order('created_at', { ascending: false });
+
+    // Citizens can only see their own reports
+    if (userRole !== 'administrator') {
+      query = query.eq('user_id', user?.id);
+    }
+
+    const { data, error } = await query;
 
     if (!error && data) {
       setFeedbackReports(data);
@@ -67,21 +76,21 @@ const Dashboard = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-24">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">My Dashboard</h1>
+          <h1 className="text-4xl font-bold mb-2">{t('dashboard.title')}</h1>
           <p className="text-muted-foreground">
-            {userRole === 'administrator' ? 'Admin Dashboard' : 'Citizen Dashboard'}
+            {userRole === 'administrator' ? t('dashboard.adminDashboard') : t('dashboard.citizenDashboard')}
           </p>
         </div>
 
         {userRole === 'administrator' && (
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle>Administrator Access</CardTitle>
-              <CardDescription>You have full access to manage feedback and system data</CardDescription>
+              <CardTitle>{t('dashboard.adminAccess')}</CardTitle>
+              <CardDescription>{t('dashboard.adminAccessDesc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <Button onClick={() => navigate('/admin')}>
-                Go to Admin Panel
+                {t('dashboard.goToAdmin')}
               </Button>
             </CardContent>
           </Card>
@@ -89,14 +98,14 @@ const Dashboard = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle>My Feedback Reports</CardTitle>
-            <CardDescription>Track the status of your submitted reports</CardDescription>
+            <CardTitle>{t('dashboard.myReports')}</CardTitle>
+            <CardDescription>{t('dashboard.trackReports')}</CardDescription>
           </CardHeader>
           <CardContent>
             {fetchingReports ? (
-              <p>Loading reports...</p>
+              <p>{t('dashboard.loadingReports')}</p>
             ) : feedbackReports.length === 0 ? (
-              <p className="text-muted-foreground">You haven't submitted any reports yet.</p>
+              <p className="text-muted-foreground">{t('dashboard.noReports')}</p>
             ) : (
               <div className="space-y-4">
                 {feedbackReports.map((report) => (
@@ -118,12 +127,12 @@ const Dashboard = () => {
                       <p className="text-sm mb-2">{report.description}</p>
                       {report.location && (
                         <p className="text-sm text-muted-foreground mb-2">
-                          Location: {report.location}
+                          {t('dashboard.reportLocation')}: {report.location}
                         </p>
                       )}
                       {report.admin_response && (
                         <div className="mt-4 p-3 bg-muted rounded">
-                          <p className="text-sm font-semibold mb-1">Admin Response:</p>
+                          <p className="text-sm font-semibold mb-1">{t('dashboard.adminResponse')}:</p>
                           <p className="text-sm">{report.admin_response}</p>
                         </div>
                       )}

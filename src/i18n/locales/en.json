@@ -163,10 +163,22 @@
     "signingUp": "Creating account...",
     "emailSent": "Confirmation email sent! Please check your inbox to verify your email address.",
     "loginSuccess": "Welcome back!",
-    "signupSuccess": "Account created! Please check your email to confirm your account before signing in."
+    "signupSuccess": "Account created successfully! You can now sign in."
   },
   "dashboard": {
-    "title": "Dashboard",
-    "welcome": "Welcome to your dashboard"
+    "title": "My Dashboard",
+    "citizenDashboard": "Citizen Dashboard",
+    "adminDashboard": "Admin Dashboard",
+    "welcome": "Welcome to your dashboard",
+    "myReports": "My Feedback Reports",
+    "trackReports": "Track the status of your submitted reports",
+    "noReports": "You haven't submitted any reports yet.",
+    "loadingReports": "Loading reports...",
+    "adminAccess": "Administrator Access",
+    "adminAccessDesc": "You have full access to manage feedback and system data",
+    "goToAdmin": "Go to Admin Panel",
+    "reportSubmitted": "Submitted",
+    "reportLocation": "Location",
+    "adminResponse": "Admin Response"
   }
 }
