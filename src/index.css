@@ -123,6 +123,9 @@ All colors MUST be HSL.
   .gradient-mineral {
     background: var(--gradient-mineral);
   }
+  #lovable-badge { 
+  display: none !important; 
+}
 
   .gradient-hero {
     background: var(--gradient-hero);
