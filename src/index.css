@@ -123,10 +123,6 @@ All colors MUST be HSL.
   .gradient-mineral {
     background: var(--gradient-mineral);
   }
-  #lovable-badge { 
-  display: none !important; 
-}
-
   .gradient-hero {
     background: var(--gradient-hero);
   }
@@ -134,4 +130,7 @@ All colors MUST be HSL.
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent;
   }
+}
+ #lovable-badge { 
+  display: none !important; 
 }
