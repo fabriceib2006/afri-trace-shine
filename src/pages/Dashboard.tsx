@@ -78,7 +78,7 @@ const Dashboard = () => {
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">{t('dashboard.title')}</h1>
           <p className="text-muted-foreground">
-            {userRole === 'administrator' ? t('dashboard.adminDashboard') : t('dashboard.citizenDashboard')}
+            {userRole === 'administrator' ? t('Admin Dashboard') : t('Citizen Dashboard')}
           </p>
         </div>
 
