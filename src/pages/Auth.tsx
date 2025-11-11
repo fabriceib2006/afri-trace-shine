@@ -115,7 +115,7 @@ const Auth = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10">
       <Navigation />
-      <div className="container mx-auto px-4 pt-24 pb-12 flex items-center justify-center min-h-screen">
+      <div className="container mx-auto px-4 pt-20 sm:pt-24 pb-12 flex items-center justify-center min-h-screen">
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle className="text-2xl text-center">AfriTrace</CardTitle>

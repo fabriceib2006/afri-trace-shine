@@ -20,9 +20,9 @@ const CommunitySection = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Image */}
-            <div className="rounded-xl overflow-hidden shadow-xl">
+            <div className="rounded-xl overflow-hidden shadow-xl h-64 lg:h-auto">
               <img
                 src={communityImage}
                 alt={t('community.imageAlt')}
@@ -83,7 +83,7 @@ const CommunitySection = () => {
           </div>
 
           {/* Environmental Metrics */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card>
               <CardHeader>
                 <div className="flex items-center gap-3">

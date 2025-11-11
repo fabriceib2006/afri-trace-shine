@@ -94,9 +94,9 @@ const FeedbackSection = () => {
   };
 
   return (
-    <section id="feedback-section" className="py-20 bg-gradient-to-b from-background to-earth-light/20">
+    <section id="feedback-section" className="py-12 sm:py-20 bg-gradient-to-b from-background to-earth-light/20">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
             <h2 className="text-4xl font-bold mb-6">{t('Title of your Feedback')}</h2>
             {!user && (

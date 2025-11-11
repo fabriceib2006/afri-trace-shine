@@ -46,7 +46,7 @@ const HeroSection = () => {
 
           {/* Quick Search */}
           <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
-            <div className="flex gap-2 bg-background/95 backdrop-blur-sm p-2 rounded-xl shadow-xl">
+            <div className="flex flex-col sm:flex-row gap-2 bg-background/95 backdrop-blur-sm p-2 rounded-xl shadow-xl">
               <Input
                 type="text"
                 placeholder="Enter batch or certificate code..."
@@ -54,9 +54,10 @@ const HeroSection = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-1 border-0 focus-visible:ring-0 text-base"
               />
-              <Button type="submit" size="lg" className="bg-secondary hover:bg-secondary/90">
+              <Button type="submit" size="lg" className="bg-secondary hover:bg-secondary/90 w-full sm:w-auto">
                 <Search className="h-5 w-5 mr-2" />
-                {t('hero.cta')}
+                <span className="hidden sm:inline">{t('hero.cta')}</span>
+                <span className="sm:hidden">Search</span>
               </Button>
             </div>
           </form>

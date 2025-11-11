@@ -110,7 +110,7 @@ const TraceabilitySection = () => {
               <CardTitle>{t('traceability.batchCode')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleVerify} className="flex gap-4">
+              <form onSubmit={handleVerify} className="flex flex-col sm:flex-row gap-4">
                 <Input
                   type="text"
                   placeholder="e.g., MCIS-2024-RW-001 or REMA-2024-TIN-045"
@@ -167,7 +167,7 @@ const TraceabilitySection = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="flex items-center justify-between">
                         <span className="text-sm">{t('traceability.remaVerified')}</span>
                         <span className={certificateData.regional_systems.REMA ? 'text-green-600' : 'text-red-600'}>

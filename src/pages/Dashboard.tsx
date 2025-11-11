@@ -74,9 +74,9 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <main className="container mx-auto px-4 py-24">
+      <main className="container mx-auto px-4 py-20 sm:py-24">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">{t('dashboard.title')}</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">{t('dashboard.title')}</h1>
           <p className="text-muted-foreground">
             {userRole === 'administrator' ? t('Admin Dashboard') : t('Citizen Dashboard')}
           </p>
@@ -111,9 +111,9 @@ const Dashboard = () => {
                 {feedbackReports.map((report) => (
                   <Card key={report.id}>
                     <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-lg">{report.title}</CardTitle>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                        <div className="flex-1">
+                          <CardTitle className="text-base sm:text-lg">{report.title}</CardTitle>
                           <CardDescription>
                             {new Date(report.created_at).toLocaleDateString()} • {report.category}
                           </CardDescription>
