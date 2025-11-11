@@ -13,21 +13,8 @@ import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/components/ui/use-toast';
 import { useTranslation } from 'react-i18next';
 import { Plus, Edit, Trash2, MapPin } from 'lucide-react';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 interface Company {
   id: string;
   name: string;
@@ -43,12 +30,19 @@ interface Company {
   regional_compliance: any;
   is_active: boolean;
 }
-
 const CompanyManagement = () => {
-  const { t } = useTranslation();
+  const {
+    t
+  } = useTranslation();
   const navigate = useNavigate();
-  const { user, userRole, loading } = useAuth();
-  const { toast } = useToast();
+  const {
+    user,
+    userRole,
+    loading
+  } = useAuth();
+  const {
+    toast
+  } = useToast();
   const [companies, setCompanies] = useState<Company[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingCompany, setEditingCompany] = useState<Company | null>(null);
@@ -62,107 +56,99 @@ const CompanyManagement = () => {
     mine_location_lng: '',
     certification_status: 'active',
     certification_start_date: '',
-    certification_end_date: '',
+    certification_end_date: ''
   });
-
   useEffect(() => {
     if (!loading && (!user || userRole !== 'administrator')) {
       navigate('/auth');
     }
   }, [user, userRole, loading, navigate]);
-
   useEffect(() => {
     if (user && userRole === 'administrator') {
       fetchCompanies();
     }
   }, [user, userRole]);
-
   const fetchCompanies = async () => {
-    const { data, error } = await supabase
-      .from('companies')
-      .select('*')
-      .order('created_at', { ascending: false });
-
+    const {
+      data,
+      error
+    } = await supabase.from('companies').select('*').order('created_at', {
+      ascending: false
+    });
     if (error) {
       toast({
         title: 'Error',
         description: 'Failed to fetch companies',
-        variant: 'destructive',
+        variant: 'destructive'
       });
     } else {
       setCompanies(data || []);
     }
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const companyData = {
       ...formData,
       mine_location_lat: formData.mine_location_lat ? parseFloat(formData.mine_location_lat) : null,
-      mine_location_lng: formData.mine_location_lng ? parseFloat(formData.mine_location_lng) : null,
+      mine_location_lng: formData.mine_location_lng ? parseFloat(formData.mine_location_lng) : null
     };
-
     if (editingCompany) {
-      const { error } = await supabase
-        .from('companies')
-        .update(companyData)
-        .eq('id', editingCompany.id);
-
+      const {
+        error
+      } = await supabase.from('companies').update(companyData).eq('id', editingCompany.id);
       if (error) {
         toast({
           title: 'Error',
           description: 'Failed to update company',
-          variant: 'destructive',
+          variant: 'destructive'
         });
       } else {
         toast({
           title: 'Success',
-          description: 'Company updated successfully',
+          description: 'Company updated successfully'
         });
         fetchCompanies();
         resetForm();
       }
     } else {
-      const { error } = await supabase.from('companies').insert([companyData]);
-
+      const {
+        error
+      } = await supabase.from('companies').insert([companyData]);
       if (error) {
         toast({
           title: 'Error',
           description: 'Failed to add company',
-          variant: 'destructive',
+          variant: 'destructive'
         });
       } else {
         toast({
           title: 'Success',
-          description: 'Company added successfully',
+          description: 'Company added successfully'
         });
         fetchCompanies();
         resetForm();
       }
     }
   };
-
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this company?')) return;
-
-    const { error } = await supabase.from('companies').delete().eq('id', id);
-
+    const {
+      error
+    } = await supabase.from('companies').delete().eq('id', id);
     if (error) {
       toast({
         title: 'Error',
         description: 'Failed to delete company',
-        variant: 'destructive',
+        variant: 'destructive'
       });
     } else {
       toast({
         title: 'Success',
-        description: 'Company deleted successfully',
+        description: 'Company deleted successfully'
       });
       fetchCompanies();
     }
   };
-
   const handleEdit = (company: Company) => {
     setEditingCompany(company);
     setFormData({
@@ -175,11 +161,10 @@ const CompanyManagement = () => {
       mine_location_lng: company.mine_location_lng?.toString() || '',
       certification_status: company.certification_status,
       certification_start_date: company.certification_start_date,
-      certification_end_date: company.certification_end_date,
+      certification_end_date: company.certification_end_date
     });
     setIsDialogOpen(true);
   };
-
   const resetForm = () => {
     setFormData({
       name: '',
@@ -191,12 +176,11 @@ const CompanyManagement = () => {
       mine_location_lng: '',
       certification_status: 'active',
       certification_start_date: '',
-      certification_end_date: '',
+      certification_end_date: ''
     });
     setEditingCompany(null);
     setIsDialogOpen(false);
   };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active':
@@ -209,15 +193,12 @@ const CompanyManagement = () => {
         return 'bg-gray-500';
     }
   };
-
   if (loading || !user || userRole !== 'administrator') {
     return null;
   }
-
-  return (
-    <div className="min-h-screen flex flex-col bg-background">
+  return <div className="min-h-screen flex flex-col bg-background">
       <Navigation />
-      <main className="flex-1 container mx-auto px-4 py-8">
+      <main className="flex-1 container mx-auto px-4 py-8 my-[40px]">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">{t('adminPanel.manageCompanies')}</h1>
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -237,73 +218,59 @@ const CompanyManagement = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="name">{t('adminPanel.companyName')}</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
+                    <Input id="name" value={formData.name} onChange={e => setFormData({
+                    ...formData,
+                    name: e.target.value
+                  })} required />
                   </div>
                   <div>
                     <Label htmlFor="registration_number">{t('adminPanel.registrationNumber')}</Label>
-                    <Input
-                      id="registration_number"
-                      value={formData.registration_number}
-                      onChange={(e) => setFormData({ ...formData, registration_number: e.target.value })}
-                      required
-                    />
+                    <Input id="registration_number" value={formData.registration_number} onChange={e => setFormData({
+                    ...formData,
+                    registration_number: e.target.value
+                  })} required />
                   </div>
                   <div>
                     <Label htmlFor="contact_email">{t('adminPanel.email')}</Label>
-                    <Input
-                      id="contact_email"
-                      type="email"
-                      value={formData.contact_email}
-                      onChange={(e) => setFormData({ ...formData, contact_email: e.target.value })}
-                    />
+                    <Input id="contact_email" type="email" value={formData.contact_email} onChange={e => setFormData({
+                    ...formData,
+                    contact_email: e.target.value
+                  })} />
                   </div>
                   <div>
                     <Label htmlFor="contact_phone">{t('adminPanel.phone')}</Label>
-                    <Input
-                      id="contact_phone"
-                      value={formData.contact_phone}
-                      onChange={(e) => setFormData({ ...formData, contact_phone: e.target.value })}
-                    />
+                    <Input id="contact_phone" value={formData.contact_phone} onChange={e => setFormData({
+                    ...formData,
+                    contact_phone: e.target.value
+                  })} />
                   </div>
                   <div className="col-span-2">
                     <Label htmlFor="address">{t('adminPanel.address')}</Label>
-                    <Input
-                      id="address"
-                      value={formData.address}
-                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    />
+                    <Input id="address" value={formData.address} onChange={e => setFormData({
+                    ...formData,
+                    address: e.target.value
+                  })} />
                   </div>
                   <div>
                     <Label htmlFor="mine_location_lat">Latitude</Label>
-                    <Input
-                      id="mine_location_lat"
-                      type="number"
-                      step="any"
-                      value={formData.mine_location_lat}
-                      onChange={(e) => setFormData({ ...formData, mine_location_lat: e.target.value })}
-                    />
+                    <Input id="mine_location_lat" type="number" step="any" value={formData.mine_location_lat} onChange={e => setFormData({
+                    ...formData,
+                    mine_location_lat: e.target.value
+                  })} />
                   </div>
                   <div>
                     <Label htmlFor="mine_location_lng">Longitude</Label>
-                    <Input
-                      id="mine_location_lng"
-                      type="number"
-                      step="any"
-                      value={formData.mine_location_lng}
-                      onChange={(e) => setFormData({ ...formData, mine_location_lng: e.target.value })}
-                    />
+                    <Input id="mine_location_lng" type="number" step="any" value={formData.mine_location_lng} onChange={e => setFormData({
+                    ...formData,
+                    mine_location_lng: e.target.value
+                  })} />
                   </div>
                   <div>
                     <Label htmlFor="certification_status">{t('adminPanel.certificationStatus')}</Label>
-                    <Select
-                      value={formData.certification_status}
-                      onValueChange={(value) => setFormData({ ...formData, certification_status: value })}
-                    >
+                    <Select value={formData.certification_status} onValueChange={value => setFormData({
+                    ...formData,
+                    certification_status: value
+                  })}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -316,23 +283,17 @@ const CompanyManagement = () => {
                   </div>
                   <div>
                     <Label htmlFor="certification_start_date">{t('adminPanel.startDate')}</Label>
-                    <Input
-                      id="certification_start_date"
-                      type="date"
-                      value={formData.certification_start_date}
-                      onChange={(e) => setFormData({ ...formData, certification_start_date: e.target.value })}
-                      required
-                    />
+                    <Input id="certification_start_date" type="date" value={formData.certification_start_date} onChange={e => setFormData({
+                    ...formData,
+                    certification_start_date: e.target.value
+                  })} required />
                   </div>
                   <div>
                     <Label htmlFor="certification_end_date">{t('adminPanel.endDate')}</Label>
-                    <Input
-                      id="certification_end_date"
-                      type="date"
-                      value={formData.certification_end_date}
-                      onChange={(e) => setFormData({ ...formData, certification_end_date: e.target.value })}
-                      required
-                    />
+                    <Input id="certification_end_date" type="date" value={formData.certification_end_date} onChange={e => setFormData({
+                    ...formData,
+                    certification_end_date: e.target.value
+                  })} required />
                   </div>
                 </div>
                 <div className="flex justify-end gap-2">
@@ -363,8 +324,7 @@ const CompanyManagement = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {companies.map((company) => (
-                  <TableRow key={company.id}>
+                {companies.map(company => <TableRow key={company.id}>
                     <TableCell className="font-medium">{company.name}</TableCell>
                     <TableCell>{company.registration_number}</TableCell>
                     <TableCell>
@@ -376,41 +336,24 @@ const CompanyManagement = () => {
                     <TableCell>{new Date(company.certification_end_date).toLocaleDateString()}</TableCell>
                     <TableCell>
                       <div className="flex gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handleEdit(company)}
-                        >
+                        <Button variant="outline" size="sm" onClick={() => handleEdit(company)}>
                           <Edit className="h-4 w-4" />
                         </Button>
-                        {company.mine_location_lat && company.mine_location_lng && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => navigate(`/map/${company.id}`)}
-                          >
+                        {company.mine_location_lat && company.mine_location_lng && <Button variant="outline" size="sm" onClick={() => navigate(`/map/${company.id}`)}>
                             <MapPin className="h-4 w-4" />
-                          </Button>
-                        )}
-                        <Button
-                          variant="destructive"
-                          size="sm"
-                          onClick={() => handleDelete(company.id)}
-                        >
+                          </Button>}
+                        <Button variant="destructive" size="sm" onClick={() => handleDelete(company.id)}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
                     </TableCell>
-                  </TableRow>
-                ))}
+                  </TableRow>)}
               </TableBody>
             </Table>
           </CardContent>
         </Card>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default CompanyManagement;
