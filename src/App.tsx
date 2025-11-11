@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import AdminPanel from "./pages/AdminPanel";
+import CompanyManagement from "./pages/CompanyManagement";
+import CitizenManagement from "./pages/CitizenManagement";
+import MineMap from "./pages/MineMap";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
@@ -28,6 +31,9 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/admin/companies" element={<CompanyManagement />} />
+            <Route path="/admin/citizens" element={<CitizenManagement />} />
+            <Route path="/map/:companyId" element={<MineMap />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfUse />} />
             <Route path="/api-docs" element={<APIDocumentation />} />

@@ -129,6 +129,30 @@ const AdminPanel = () => {
           </p>
         </div>
 
+        {/* Quick Access Cards */}
+        <div className="grid gap-4 md:grid-cols-2 mb-8">
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate('/admin/companies')}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <span>🏢</span> Company Management
+              </CardTitle>
+              <CardDescription>
+                Manage registered mining companies, certifications, and mine locations
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => navigate('/admin/citizens')}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <span>👥</span> Citizen Management
+              </CardTitle>
+              <CardDescription>
+                View and manage registered citizens in the system
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>

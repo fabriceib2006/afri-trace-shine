@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      companies: {
+        Row: {
+          address: string | null
+          certification_end_date: string
+          certification_start_date: string
+          certification_status: string
+          contact_email: string | null
+          contact_phone: string | null
+          created_at: string
+          id: string
+          is_active: boolean | null
+          mine_location_lat: number | null
+          mine_location_lng: number | null
+          name: string
+          regional_compliance: Json | null
+          registration_number: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          certification_end_date: string
+          certification_start_date: string
+          certification_status?: string
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          mine_location_lat?: number | null
+          mine_location_lng?: number | null
+          name: string
+          regional_compliance?: Json | null
+          registration_number: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          certification_end_date?: string
+          certification_start_date?: string
+          certification_status?: string
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          mine_location_lat?: number | null
+          mine_location_lng?: number | null
+          name?: string
+          regional_compliance?: Json | null
+          registration_number?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       feedback_reports: {
         Row: {
           admin_id: string | null
@@ -61,6 +115,7 @@ export type Database = {
           batch_code: string
           blockchain_hash: string | null
           certification_status: string
+          company_id: string | null
           created_at: string | null
           export_date: string
           icglr_compliant: boolean | null
@@ -68,6 +123,7 @@ export type Database = {
           mine_site: string
           mineral_type: string
           origin: string
+          regional_systems: Json | null
           updated_at: string | null
           verified_by_rema: boolean | null
         }
@@ -75,6 +131,7 @@ export type Database = {
           batch_code: string
           blockchain_hash?: string | null
           certification_status: string
+          company_id?: string | null
           created_at?: string | null
           export_date: string
           icglr_compliant?: boolean | null
@@ -82,6 +139,7 @@ export type Database = {
           mine_site: string
           mineral_type: string
           origin: string
+          regional_systems?: Json | null
           updated_at?: string | null
           verified_by_rema?: boolean | null
         }
@@ -89,6 +147,7 @@ export type Database = {
           batch_code?: string
           blockchain_hash?: string | null
           certification_status?: string
+          company_id?: string | null
           created_at?: string | null
           export_date?: string
           icglr_compliant?: boolean | null
@@ -96,10 +155,19 @@ export type Database = {
           mine_site?: string
           mineral_type?: string
           origin?: string
+          regional_systems?: Json | null
           updated_at?: string | null
           verified_by_rema?: boolean | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "mineral_certificates_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       otp_codes: {
         Row: {
