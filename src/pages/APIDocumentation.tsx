@@ -2,20 +2,23 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Code, Database, Key, Shield, CheckCircle2, AlertCircle } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 const APIDocumentation = () => {
+  const { t } = useTranslation();
+  
   return (
-    <div className="min-h-screen flex flex-column">
+    <div className="min-h-screen flex flex-col">
       <Navigation />
       
       <main className="flex-1 pt-20">
         <article className="container mx-auto px-4 py-12 max-w-6xl">
           <div className="mb-8">
             <h1 className="text-4xl font-heading font-bold text-foreground mb-4">
-              API Documentation
+              {t('apiDocs.title')}
             </h1>
             <p className="text-xl text-muted-foreground">
-              Access AfriTrace mineral verification data programmatically
+              {t('apiDocs.subtitle')}
             </p>
           </div>
 
@@ -25,16 +28,16 @@ const APIDocumentation = () => {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Database className="h-6 w-6 text-primary" />
-                  <CardTitle>Overview</CardTitle>
+                  <CardTitle>{t('apiDocs.overview')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-foreground/80">
-                  The AfriTrace API provides programmatic access to mineral certification data, enabling businesses and developers to integrate traceability verification into their supply chain systems. Our API follows RESTful principles and returns JSON-formatted responses.
+                  {t('apiDocs.overviewDesc')}
                 </p>
                 <div className="bg-muted/30 p-4 rounded-lg">
                   <p className="text-sm font-mono text-foreground">
-                    Base URL: <span className="text-primary">https://api.afritrace.rw/v1</span>
+                    {t('apiDocs.baseUrl')}: <span className="text-primary">https://api.afritrace.rw/v1</span>
                   </p>
                 </div>
               </CardContent>
@@ -45,12 +48,12 @@ const APIDocumentation = () => {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Key className="h-6 w-6 text-primary" />
-                  <CardTitle>Authentication</CardTitle>
+                  <CardTitle>{t('apiDocs.authentication')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-foreground/80">
-                  All API requests require authentication using an API key. Contact our team at fabriceib2005@gmail.com to obtain your API credentials.
+                  {t('apiDocs.authDesc')}
                 </p>
                 <div className="bg-slate-900 p-4 rounded-lg">
                   <pre className="text-sm text-green-400 overflow-x-auto">
@@ -66,22 +69,22 @@ const APIDocumentation = () => {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Code className="h-6 w-6 text-primary" />
-                  <CardTitle>API Endpoints</CardTitle>
+                  <CardTitle>{t('apiDocs.endpoints')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* Verify Certificate */}
                 <div className="border-l-4 border-primary pl-4">
                   <h3 className="text-lg font-semibold text-foreground mb-2">
-                    POST /certificates/verify
+                    {t('apiDocs.verifyEndpoint')}
                   </h3>
                   <p className="text-sm text-foreground/70 mb-3">
-                    Verify a mineral certificate or batch code against REMA and ICGLR databases.
+                    {t('apiDocs.verifyDesc')}
                   </p>
                   
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-2">Request Body:</p>
+                      <p className="text-sm font-semibold text-foreground mb-2">{t('apiDocs.requestBody')}</p>
                       <div className="bg-slate-900 p-3 rounded">
                         <pre className="text-xs text-green-400">
                           <code>{`{
@@ -93,7 +96,7 @@ const APIDocumentation = () => {
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-2">Response:</p>
+                      <p className="text-sm font-semibold text-foreground mb-2">{t('apiDocs.response')}</p>
                       <div className="bg-slate-900 p-3 rounded">
                         <pre className="text-xs text-green-400">
                           <code>{`{
@@ -115,25 +118,25 @@ const APIDocumentation = () => {
                 {/* List Certificates */}
                 <div className="border-l-4 border-secondary pl-4">
                   <h3 className="text-lg font-semibold text-foreground mb-2">
-                    GET /certificates
+                    {t('apiDocs.listEndpoint')}
                   </h3>
                   <p className="text-sm text-foreground/70 mb-3">
-                    Retrieve a paginated list of verified mineral certificates.
+                    {t('apiDocs.listDesc')}
                   </p>
                   
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-2">Query Parameters:</p>
+                      <p className="text-sm font-semibold text-foreground mb-2">{t('apiDocs.queryParams')}</p>
                       <ul className="text-sm space-y-1 text-foreground/70">
-                        <li><code className="bg-muted px-2 py-1 rounded">page</code> - Page number (default: 1)</li>
-                        <li><code className="bg-muted px-2 py-1 rounded">limit</code> - Results per page (default: 20, max: 100)</li>
-                        <li><code className="bg-muted px-2 py-1 rounded">mineral_type</code> - Filter by mineral type</li>
-                        <li><code className="bg-muted px-2 py-1 rounded">origin</code> - Filter by district/origin</li>
+                        <li><code className="bg-muted px-2 py-1 rounded">page</code> - {t('apiDocs.page')}</li>
+                        <li><code className="bg-muted px-2 py-1 rounded">limit</code> - {t('apiDocs.limit')}</li>
+                        <li><code className="bg-muted px-2 py-1 rounded">mineral_type</code> - {t('apiDocs.mineralType')}</li>
+                        <li><code className="bg-muted px-2 py-1 rounded">origin</code> - {t('apiDocs.origin')}</li>
                       </ul>
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-2">Example Request:</p>
+                      <p className="text-sm font-semibold text-foreground mb-2">{t('apiDocs.exampleRequest')}</p>
                       <div className="bg-slate-900 p-3 rounded">
                         <pre className="text-xs text-green-400">
                           <code>{`GET /certificates?page=1&limit=10&mineral_type=Coltan`}</code>
@@ -146,15 +149,15 @@ const APIDocumentation = () => {
                 {/* Submit Feedback */}
                 <div className="border-l-4 border-accent pl-4">
                   <h3 className="text-lg font-semibold text-foreground mb-2">
-                    POST /feedback
+                    {t('apiDocs.feedbackEndpoint')}
                   </h3>
                   <p className="text-sm text-foreground/70 mb-3">
-                    Submit community feedback or environmental concerns (requires user authentication).
+                    {t('apiDocs.feedbackDesc')}
                   </p>
                   
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-2">Request Body:</p>
+                      <p className="text-sm font-semibold text-foreground mb-2">{t('apiDocs.requestBody')}</p>
                       <div className="bg-slate-900 p-3 rounded">
                         <pre className="text-xs text-green-400">
                           <code>{`{
@@ -176,7 +179,7 @@ const APIDocumentation = () => {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Shield className="h-6 w-6 text-primary" />
-                  <CardTitle>Rate Limits & Best Practices</CardTitle>
+                  <CardTitle>{t('apiDocs.rateLimits')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -184,29 +187,29 @@ const APIDocumentation = () => {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-foreground">Rate Limits</p>
-                      <p className="text-sm text-foreground/70">1000 requests per hour per API key</p>
+                      <p className="font-semibold text-foreground">{t('apiDocs.rateLimitsTitle')}</p>
+                      <p className="text-sm text-foreground/70">{t('apiDocs.rateLimitsDesc')}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-foreground">Data Caching</p>
-                      <p className="text-sm text-foreground/70">Cache responses for 15 minutes minimum</p>
+                      <p className="font-semibold text-foreground">{t('apiDocs.caching')}</p>
+                      <p className="text-sm text-foreground/70">{t('apiDocs.cachingDesc')}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-foreground">Batch Requests</p>
-                      <p className="text-sm text-foreground/70">Use bulk endpoints for multiple verifications</p>
+                      <p className="font-semibold text-foreground">{t('apiDocs.batch')}</p>
+                      <p className="text-sm text-foreground/70">{t('apiDocs.batchDesc')}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold text-foreground">Error Handling</p>
-                      <p className="text-sm text-foreground/70">Implement exponential backoff for 429 errors</p>
+                      <p className="font-semibold text-foreground">{t('apiDocs.errorHandling')}</p>
+                      <p className="text-sm text-foreground/70">{t('apiDocs.errorHandlingDesc')}</p>
                     </div>
                   </div>
                 </div>
@@ -218,18 +221,18 @@ const APIDocumentation = () => {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <AlertCircle className="h-6 w-6 text-destructive" />
-                  <CardTitle>Error Codes</CardTitle>
+                  <CardTitle>{t('apiDocs.errorCodes')}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {[
-                    { code: "200", desc: "Success - Request completed successfully" },
-                    { code: "400", desc: "Bad Request - Invalid parameters or malformed request" },
-                    { code: "401", desc: "Unauthorized - Invalid or missing API key" },
-                    { code: "404", desc: "Not Found - Certificate or resource does not exist" },
-                    { code: "429", desc: "Too Many Requests - Rate limit exceeded" },
-                    { code: "500", desc: "Server Error - Contact support if persistent" },
+                    { code: "200", desc: t('apiDocs.error200') },
+                    { code: "400", desc: t('apiDocs.error400') },
+                    { code: "401", desc: t('apiDocs.error401') },
+                    { code: "404", desc: t('apiDocs.error404') },
+                    { code: "429", desc: t('apiDocs.error429') },
+                    { code: "500", desc: t('apiDocs.error500') },
                   ].map((error) => (
                     <div key={error.code} className="flex items-center gap-3 p-3 bg-muted/30 rounded">
                       <code className="font-mono font-bold text-lg text-foreground">{error.code}</code>
@@ -243,18 +246,18 @@ const APIDocumentation = () => {
             {/* Contact */}
             <Card>
               <CardHeader>
-                <CardTitle>Need Help?</CardTitle>
+                <CardTitle>{t('apiDocs.needHelp')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-foreground/80 mb-4">
-                  For API access requests, technical support, or to report issues, contact our developer team:
+                  {t('apiDocs.helpDesc')}
                 </p>
                 <div className="space-y-2">
                   <p className="text-sm">
-                    <strong>Email:</strong> <a href="mailto:fabriceib2005@gmail.com" className="text-primary hover:underline">fabriceib2005@gmail.com</a>
+                    <strong>{t('apiDocs.email')}</strong> <a href="mailto:fabriceib2005@gmail.com" className="text-primary hover:underline">fabriceib2005@gmail.com</a>
                   </p>
                   <p className="text-sm">
-                    <strong>Phone:</strong> +250 788 700 484
+                    <strong>{t('apiDocs.phone')}</strong> +250 788 700 484
                   </p>
                 </div>
               </CardContent>
