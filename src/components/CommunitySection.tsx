@@ -83,56 +83,56 @@ const CommunitySection = () => {
           </div>
 
           {/* Environmental Metrics */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-sustainability/10">
-                    <Leaf className="h-5 w-5 text-sustainability" />
+              <CardHeader className="p-4 sm:p-6">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-2 rounded-lg bg-sustainability/10 shrink-0">
+                    <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-sustainability" />
                   </div>
-                  <CardTitle className="text-lg">{t('community.environmentalCompliance')}</CardTitle>
+                  <CardTitle className="text-base sm:text-lg leading-tight">{t('community.environmentalCompliance')}</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold text-sustainability mb-2">96%</div>
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <div className="text-2xl sm:text-3xl font-bold text-sustainability mb-2">96%</div>
                 <Progress value={96} className="h-2 mb-2" />
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   {t('community.sitesStandards')}
                 </p>
               </CardContent>
             </Card>
 
             <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-secondary/10">
-                    <Users className="h-5 w-5 text-secondary" />
+              <CardHeader className="p-4 sm:p-6">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-2 rounded-lg bg-secondary/10 shrink-0">
+                    <Users className="h-4 w-4 sm:h-5 sm:w-5 text-secondary" />
                   </div>
-                  <CardTitle className="text-lg">{t('community.womenEmpowerment')}</CardTitle>
+                  <CardTitle className="text-base sm:text-lg leading-tight">{t('community.womenEmpowerment')}</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold text-secondary mb-2">42%</div>
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <div className="text-2xl sm:text-3xl font-bold text-secondary mb-2">42%</div>
                 <Progress value={42} className="h-2 mb-2" />
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   {t('community.womenWorkforce')}
                 </p>
               </CardContent>
             </Card>
 
             <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <Heart className="h-5 w-5 text-primary" />
+              <CardHeader className="p-4 sm:p-6">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10 shrink-0">
+                    <Heart className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   </div>
-                  <CardTitle className="text-lg">{t('community.localSpending')}</CardTitle>
+                  <CardTitle className="text-base sm:text-lg leading-tight">{t('community.localSpending')}</CardTitle>
                 </div>
               </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold text-primary mb-2">78%</div>
+              <CardContent className="p-4 sm:p-6 pt-0">
+                <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">78%</div>
                 <Progress value={78} className="h-2 mb-2" />
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   {t('community.localSuppliers')}
                 </p>
               </CardContent>
