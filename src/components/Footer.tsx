@@ -1,5 +1,6 @@
 import { Mountain, Mail, Phone, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -51,24 +52,24 @@ const Footer = () => {
             <h3 className="font-heading font-bold mb-4">{t('footer.resources')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/api-docs" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <Link to="/api-docs" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   {t('footer.apiDocs')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/data-standards" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <Link to="/data-standards" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   {t('footer.dataStandards')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/privacy" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <Link to="/privacy" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   {t('footer.privacy')}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms" className="text-primary-foreground/80 hover:text-secondary transition-colors">
+                <Link to="/terms" className="text-primary-foreground/80 hover:text-secondary transition-colors">
                   {t('footer.terms')}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
