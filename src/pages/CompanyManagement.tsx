@@ -58,6 +58,7 @@ const CompanyManagement = () => {
     certification_start_date: '',
     certification_end_date: ''
   });
+  const [isSyncing, setIsSyncing] = useState(false);
   useEffect(() => {
     if (!loading && (!user || userRole !== 'administrator')) {
       navigate('/auth');
@@ -165,6 +166,31 @@ const CompanyManagement = () => {
     });
     setIsDialogOpen(true);
   };
+  const handleSyncREMA = async () => {
+    setIsSyncing(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('sync-rema-companies');
+      
+      if (error) throw error;
+      
+      toast({
+        title: 'Success',
+        description: `REMA sync completed. ${data.synced} companies synced.`
+      });
+      
+      fetchCompanies();
+    } catch (error) {
+      console.error('REMA sync error:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to sync with REMA API',
+        variant: 'destructive'
+      });
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
   const resetForm = () => {
     setFormData({
       name: '',
@@ -201,7 +227,15 @@ const CompanyManagement = () => {
       <main className="flex-1 container mx-auto px-4 py-8 my-[40px]">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">{t('adminPanel.manageCompanies')}</h1>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <div className="flex gap-2">
+            <Button 
+              onClick={handleSyncREMA} 
+              disabled={isSyncing}
+              variant="outline"
+            >
+              {isSyncing ? 'Syncing...' : 'Sync REMA Companies'}
+            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button onClick={() => resetForm()}>
                 <Plus className="mr-2 h-4 w-4" />
@@ -304,7 +338,8 @@ const CompanyManagement = () => {
                 </div>
               </form>
             </DialogContent>
-          </Dialog>
+            </Dialog>
+          </div>
         </div>
 
         <Card>
