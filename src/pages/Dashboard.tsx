@@ -99,7 +99,7 @@ const Dashboard = () => {
         <Card>
           <CardHeader>
             <CardTitle>{t('dashboard.myReports')}</CardTitle>
-            <CardDescription>{t('dashboard.trackReports')}</CardDescription>
+            <CardDescription>{t('Track Reports')}</CardDescription>
           </CardHeader>
           <CardContent>
             {fetchingReports ? (
