@@ -81,15 +81,15 @@ const EducationSection = () => {
                       <div className="flex-1 min-w-0 w-full">
                         <div className="flex items-center justify-between mb-2 gap-2">
                           <span className={`text-xs font-semibold uppercase tracking-wide ${resource.color} truncate`}>
-                            {t(`${resource.id}.type`)}
+                            {t(`${resource.id} Type`)}
                           </span>
                           <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </div>
                         <CardTitle className="text-lg sm:text-xl mb-2 break-words">
-                          {t(`${resource.id}.title`)}
+                          {t(`${resource.id} Title`)}
                         </CardTitle>
                         <CardDescription className="mb-3 text-sm line-clamp-3">
-                          {t(`${resource.id}.description`)}
+                          {t(`${resource.id} Description`)}
                         </CardDescription>
                         <div className="flex flex-wrap gap-1.5">
                           {getTopics(resource.id).map((topic, i) => <span key={i} className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground whitespace-nowrap">
@@ -122,15 +122,15 @@ const EducationSection = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <span className={`text-xs font-semibold uppercase tracking-wide ${resources[selectedResource].color} block mb-1`}>
-                          {t(`${resources[selectedResource].id}.type`)}
+                          {t(`${resources[selectedResource].id} Type`)}
                         </span>
                         <DialogTitle className="text-left text-lg sm:text-xl break-words">
-                          {t(`${resources[selectedResource].id}.title`)}
+                          {t(`${resources[selectedResource].id} Title`)}
                         </DialogTitle>
                       </div>
                     </div>
                     <DialogDescription className="text-left text-sm sm:text-base">
-                      {t(`${resources[selectedResource].id}.description`)}
+                      {t(`${resources[selectedResource].id} Description`)}
                     </DialogDescription>
                   </DialogHeader>
                   <div className="mt-4">
