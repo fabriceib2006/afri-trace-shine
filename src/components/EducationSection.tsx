@@ -96,15 +96,15 @@ const EducationSection = () => {
                       <div className="flex-1 min-w-0 w-full">
                         <div className="flex items-center justify-between mb-2 gap-2">
                           <span className={`text-xs font-semibold uppercase tracking-wide ${resource.color} truncate`}>
-                            {t(`education.resources.${resource.id}.type`)}
+                            {t(`${resource.id}.type`)}
                           </span>
                           <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </div>
                         <CardTitle className="text-lg sm:text-xl mb-2 break-words">
-                          {t(`education.resources.${resource.id}.title`)}
+                          {t(`${resource.id}.title`)}
                         </CardTitle>
                         <CardDescription className="mb-3 text-sm line-clamp-3">
-                          {t(`education.resources.${resource.id}.description`)}
+                          {t(`${resource.id}.description`)}
                         </CardDescription>
                         <div className="flex flex-wrap gap-1.5">
                           {getTopics(resource.id).map((topic, i) => (
@@ -112,7 +112,7 @@ const EducationSection = () => {
                               key={i}
                               className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground whitespace-nowrap"
                             >
-                              {t(`education.topics.${topic}`)}
+                              {t(`${topic}`)}
                             </span>
                           ))}
                         </div>
@@ -121,7 +121,7 @@ const EducationSection = () => {
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6 pt-0">
                     <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-sm sm:text-base">
-                      {t('education.accessResource')}
+                      {t('Access Resource')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -144,15 +144,15 @@ const EducationSection = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <span className={`text-xs font-semibold uppercase tracking-wide ${resources[selectedResource].color} block mb-1`}>
-                          {t(`education.resources.${resources[selectedResource].id}.type`)}
+                          {t(`${resources[selectedResource].id}.type`)}
                         </span>
                         <DialogTitle className="text-left text-lg sm:text-xl break-words">
-                          {t(`education.resources.${resources[selectedResource].id}.title`)}
+                          {t(`${resources[selectedResource].id}.title`)}
                         </DialogTitle>
                       </div>
                     </div>
                     <DialogDescription className="text-left text-sm sm:text-base">
-                      {t(`education.resources.${resources[selectedResource].id}.description`)}
+                      {t(`${resources[selectedResource].id}.description`)}
                     </DialogDescription>
                   </DialogHeader>
                   <div className="mt-4">
@@ -165,7 +165,7 @@ const EducationSection = () => {
                           key={i}
                           className="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-muted text-muted-foreground whitespace-nowrap"
                         >
-                          {t(`education.topics.${topic}`)}
+                          {t(`${topic}`)}
                         </span>
                       ))}
                     </div>
@@ -180,13 +180,13 @@ const EducationSection = () => {
             <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
               <CardContent className="pt-6">
                 <h3 className="text-xl font-heading font-bold mb-3">
-                  {t('education.learnMore')}
+                  {t('Learn More')}
                 </h3>
                 <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
-                  {t('education.learnMoreDescription')}
+                  {t('Learn More Description')}
                 </p>
                 <Button className="bg-primary hover:bg-primary/90">
-                  {t('education.exploreLibrary')}
+                  {t('Explore Library')}
                 </Button>
               </CardContent>
             </Card>
