@@ -98,15 +98,15 @@ const FeedbackSection = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <div>
-            <h2 className="text-4xl font-bold mb-6">{t('feedback.title')}</h2>
+            <h2 className="text-4xl font-bold mb-6">{t('Title of your Feedback')}</h2>
             {!user && (
               <Card className="mb-4 border-blue-500">
                 <CardContent className="pt-6">
                   <p className="text-sm mb-4">
-                    <strong>{t('feedback.signInRequired')}</strong> {t('feedback.signInMessage')}
+                    <strong>{t('Sign In Required')}</strong> {t('Sign In Message')}
                   </p>
                   <Button onClick={() => navigate('/auth')} className="w-full">
-                    {t('feedback.signInButton')}
+                    {t('Sign In Button')}
                   </Button>
                 </CardContent>
               </Card>
@@ -115,29 +115,29 @@ const FeedbackSection = () => {
               <CardHeader>
                 <div className="flex items-center mb-2">
                   <AlertCircle className="h-6 w-6 text-primary mr-2" />
-                  <CardTitle>{t('feedback.whyMatters')}</CardTitle>
+                  <CardTitle>{t('Why Matters')}</CardTitle>
                 </div>
                 <CardDescription>
-                  {t('feedback.whyMattersDescription')}
+                  {t('Why Matters Description')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <h4 className="font-semibold mb-2">{t('feedback.whatToReport')}</h4>
+                  <h4 className="font-semibold mb-2">{t('What To Report')}</h4>
                   <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>• {t('feedback.environmental')}</li>
-                    <li>• {t('feedback.social')}</li>
-                    <li>• {t('feedback.certificationIssues')}</li>
-                    <li>• {t('feedback.general')}</li>
+                    <li>• {t('Environmental issues')}</li>
+                    <li>• {t('Social Impact')}</li>
+                    <li>• {t('Certification Issues')}</li>
+                    <li>• {t('General Issues')}</li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">{t('feedback.howItWorks')}</h4>
                   <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside">
-                    <li>{t('feedback.step1')}</li>
-                    <li>{t('feedback.step2')}</li>
-                    <li>{t('feedback.step3')}</li>
-                    <li>{t('feedback.step4')}</li>
+                    <li>{t('Step1 Enter Report Title')}</li>
+                    <li>{t('Step2 Enter Location')}</li>
+                    <li>{t('Step3 Choose Category ')}</li>
+                    <li>{t('Step4 Enter your Message')}</li>
                   </ol>
                 </div>
               </CardContent>
@@ -146,62 +146,62 @@ const FeedbackSection = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>{t('feedback.formTitle')}</CardTitle>
+              <CardTitle>{t('Form Title')}</CardTitle>
               <CardDescription>
-                {t('feedback.formDescription')}
+                {t('Form Description')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="title">{t('feedback.reportTitle')} *</Label>
+                  <Label htmlFor="title">{t('Report Title')} *</Label>
                   <Input
                     id="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder={t('feedback.reportTitlePlaceholder')}
+                    placeholder={t('Report Title Placeholder')}
                     required
                     disabled={!user}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="location">{t('feedback.location')}</Label>
+                  <Label htmlFor="location">{t('Location')}</Label>
                   <Input
                     id="location"
                     value={formData.location}
                     onChange={handleChange}
-                    placeholder={t('feedback.locationPlaceholder')}
+                    placeholder={t('Location Placeholder')}
                     disabled={!user}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="category">{t('feedback.category')} *</Label>
+                  <Label htmlFor="category">{t('Category')} *</Label>
                   <Select 
                     value={formData.category} 
                     onValueChange={(value) => setFormData({ ...formData, category: value })}
                     disabled={!user}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder={t('feedback.selectCategory')} />
+                      <SelectValue placeholder={t('Select Category')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="environmental">{t('feedback.categories.environmental')}</SelectItem>
-                      <SelectItem value="social">{t('feedback.categories.social')}</SelectItem>
-                      <SelectItem value="certification">{t('feedback.categories.certification')}</SelectItem>
-                      <SelectItem value="other">{t('feedback.categories.other')}</SelectItem>
+                      <SelectItem value="environmental">{t('Categories Environmental')}</SelectItem>
+                      <SelectItem value="social">{t('Categories Social')}</SelectItem>
+                      <SelectItem value="certification">{t('Categories Certification')}</SelectItem>
+                      <SelectItem value="other">{t('Categories Other')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">{t('feedback.message')} *</Label>
+                  <Label htmlFor="description">{t('Message')} *</Label>
                   <Textarea
                     id="description"
                     value={formData.description}
                     onChange={handleChange}
-                    placeholder={t('feedback.messagePlaceholder')}
+                    placeholder={t('Message Placeholder')}
                     rows={6}
                     required
                     disabled={!user}
@@ -210,7 +210,7 @@ const FeedbackSection = () => {
 
                 <Button type="submit" className="w-full" disabled={!user || loading}>
                   <Send className="mr-2 h-4 w-4" />
-                  {loading ? t('feedback.submitting') : t('feedback.submitButton')}
+                  {loading ? t('Submitting') : t('Submit Button')}
                 </Button>
               </form>
             </CardContent>
