@@ -86,10 +86,10 @@ const EducationSection = () => {
                           <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </div>
                         <CardTitle className="text-lg sm:text-xl mb-2 break-words">
-                          {t(`${resource.id} Title`)}
+                          {t(`${resource.id}.title`)}
                         </CardTitle>
                         <CardDescription className="mb-3 text-sm line-clamp-3">
-                          {t(`${resource.id} Description`)}
+                          {t(`${resource.id}.description`)}
                         </CardDescription>
                         <div className="flex flex-wrap gap-1.5">
                           {getTopics(resource.id).map((topic, i) => <span key={i} className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground whitespace-nowrap">
