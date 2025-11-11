@@ -81,7 +81,7 @@ const EducationSection = () => {
                       <div className="flex-1 min-w-0 w-full">
                         <div className="flex items-center justify-between mb-2 gap-2">
                           <span className={`text-xs font-semibold uppercase tracking-wide ${resource.color} truncate`}>
-                            {t(`${resource.id} Type`)}
+                            {t(`${resource.id}.type`)}
                           </span>
                           <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </div>
@@ -122,15 +122,15 @@ const EducationSection = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <span className={`text-xs font-semibold uppercase tracking-wide ${resources[selectedResource].color} block mb-1`}>
-                          {t(`${resources[selectedResource].id} Type`)}
+                          {t(`${resources[selectedResource].id}.type`)}
                         </span>
                         <DialogTitle className="text-left text-lg sm:text-xl break-words">
-                          {t(`${resources[selectedResource].id} Title`)}
+                          {t(`${resources[selectedResource].id}.title`)}
                         </DialogTitle>
                       </div>
                     </div>
                     <DialogDescription className="text-left text-sm sm:text-base">
-                      {t(`${resources[selectedResource].id} Description`)}
+                      {t(`${resources[selectedResource].id}.description`)}
                     </DialogDescription>
                   </DialogHeader>
                   <div className="mt-4">
