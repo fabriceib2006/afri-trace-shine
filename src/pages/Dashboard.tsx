@@ -90,7 +90,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <Button onClick={() => navigate('/admin')}>
-                {t('dashboard.goToAdmin')}
+                {t('Go To Admin Dashboard')}
               </Button>
             </CardContent>
           </Card>
