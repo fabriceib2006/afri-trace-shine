@@ -88,29 +88,29 @@ const EducationSection = () => {
                   className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group"
                   onClick={() => setSelectedResource(index)}
                 >
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-lg ${resource.bgColor}`}>
-                        <Icon className={`h-6 w-6 ${resource.color}`} />
+                  <CardHeader className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+                      <div className={`p-2 sm:p-3 rounded-lg ${resource.bgColor} shrink-0`}>
+                        <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${resource.color}`} />
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className={`text-xs font-semibold uppercase tracking-wide ${resource.color}`}>
+                      <div className="flex-1 min-w-0 w-full">
+                        <div className="flex items-center justify-between mb-2 gap-2">
+                          <span className={`text-xs font-semibold uppercase tracking-wide ${resource.color} truncate`}>
                             {t(`education.resources.${resource.id}.type`)}
                           </span>
-                          <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                         </div>
-                        <CardTitle className="text-xl mb-2">
+                        <CardTitle className="text-lg sm:text-xl mb-2 break-words">
                           {t(`education.resources.${resource.id}.title`)}
                         </CardTitle>
-                        <CardDescription className="mb-3">
+                        <CardDescription className="mb-3 text-sm line-clamp-3">
                           {t(`education.resources.${resource.id}.description`)}
                         </CardDescription>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-1.5">
                           {getTopics(resource.id).map((topic, i) => (
                             <span
                               key={i}
-                              className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground"
+                              className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground whitespace-nowrap"
                             >
                               {t(`education.topics.${topic}`)}
                             </span>
@@ -119,8 +119,8 @@ const EducationSection = () => {
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <CardContent className="p-4 sm:p-6 pt-0">
+                    <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-sm sm:text-base">
                       {t('education.accessResource')}
                     </Button>
                   </CardContent>
@@ -131,39 +131,39 @@ const EducationSection = () => {
 
           {/* Resource Detail Dialog */}
           <Dialog open={selectedResource !== null} onOpenChange={() => setSelectedResource(null)}>
-            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+            <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto p-4 sm:p-6">
               {selectedResource !== null && (
                 <>
                   <DialogHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className={`p-3 rounded-lg ${resources[selectedResource].bgColor}`}>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4">
+                      <div className={`p-2 sm:p-3 rounded-lg ${resources[selectedResource].bgColor} shrink-0`}>
                         {(() => {
                           const Icon = resources[selectedResource].icon;
-                          return <Icon className={`h-6 w-6 ${resources[selectedResource].color}`} />;
+                          return <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${resources[selectedResource].color}`} />;
                         })()}
                       </div>
-                      <div>
+                      <div className="flex-1 min-w-0">
                         <span className={`text-xs font-semibold uppercase tracking-wide ${resources[selectedResource].color} block mb-1`}>
                           {t(`education.resources.${resources[selectedResource].id}.type`)}
                         </span>
-                        <DialogTitle className="text-left">
+                        <DialogTitle className="text-left text-lg sm:text-xl break-words">
                           {t(`education.resources.${resources[selectedResource].id}.title`)}
                         </DialogTitle>
                       </div>
                     </div>
-                    <DialogDescription className="text-left">
+                    <DialogDescription className="text-left text-sm sm:text-base">
                       {t(`education.resources.${resources[selectedResource].id}.description`)}
                     </DialogDescription>
                   </DialogHeader>
                   <div className="mt-4">
-                    <p className="text-foreground leading-relaxed">
+                    <p className="text-foreground leading-relaxed text-sm sm:text-base">
                       {resources[selectedResource].content}
                     </p>
                     <div className="flex flex-wrap gap-2 mt-6">
                       {getTopics(resources[selectedResource].id).map((topic, i) => (
                         <span
                           key={i}
-                          className="text-sm px-3 py-1 rounded-full bg-muted text-muted-foreground"
+                          className="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-muted text-muted-foreground whitespace-nowrap"
                         >
                           {t(`education.topics.${topic}`)}
                         </span>
