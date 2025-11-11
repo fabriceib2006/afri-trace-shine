@@ -40,6 +40,48 @@
     "downloadGuide": "Download Guide",
     "watchVideo": "Watch Video"
   },
+  "blockchain": {
+    "type": "Course",
+    "title": "Blockchain for Mineral Traceability",
+    "description": "Learn how blockchain technology ensures transparent and immutable mineral tracking"
+  },
+  "heritage": {
+    "type": "Video",
+    "title": "Rwanda's Mining Heritage",
+    "description": "Documentary on sustainable mining practices in Rwanda"
+  },
+  "certification": {
+    "type": "Guide",
+    "title": "ICGLR Certification Guide",
+    "description": "Complete guide to conflict-free mineral certification standards"
+  },
+  "esg": {
+    "type": "Report",
+    "title": "ESG in African Mining",
+    "description": "Environmental, Social, and Governance best practices"
+  },
+  "geology": {
+    "type": "Course",
+    "title": "African Mineral Geology",
+    "description": "Understanding Africa's rich geological diversity and mineral formations"
+  },
+  "stories": {
+    "type": "Video",
+    "title": "Community Success Stories",
+    "description": "Real stories from mining communities across Africa"
+  },
+  "supplyChain": "Supply Chain",
+  "transparency": "Transparency",
+  "sustainability": "Sustainability",
+  "community": "Community",
+  "icglr": "ICGLR",
+  "ethics": "Ethics",
+  "governance": "Governance",
+  "impact": "Impact",
+  "geology": "Geology",
+  "science": "Science",
+  "stories": "Stories",
+  "Access Resource": "Access Resource",
   "feedback": {
     "title": "Report an Issue",
     "subtitle": "Help us improve AfriTrace by reporting concerns",

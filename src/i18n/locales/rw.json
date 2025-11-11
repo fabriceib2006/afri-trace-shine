@@ -40,11 +40,53 @@
     "description": "Soma ingaruka nziza za AfriTrace ku miryango y'abacukuzi n'ibidukikije."
   },
   "education": {
-    "title": "Burira Amabuye y'Agaciro Yemewe",
-    "description": "Menya ibijyanye no gucukura amabuye y'agaciro bihoraho n'amahame mpuzamahanga.",
-    "downloadGuide": "Kuramo Umuyoboro",
-    "watchVideo": "Reba Videwo"
+    "title": "Wige ku Byerekeye Amabuye y'Agaciro y'Inshingano",
+    "subtitle": "Bonera ibikoresho by'uburezi ku micungire y'ubucukuzi bw'amabuye y'agaciro irambye n'amahame mpuzamahanga",
+    "downloadGuide": "Kuramo Umuyobozi",
+    "watchVideo": "Reba Video"
   },
+  "blockchain": {
+    "type": "Isomo",
+    "title": "Blockchain mu Gukurikirana Amabuye y'Agaciro",
+    "description": "Wige uburyo tekinoroji ya blockchain yemeza gukurikirana amabuye y'agaciro mu buryo bwo ku mugaragaro kandi budahinduka"
+  },
+  "heritage": {
+    "type": "Video",
+    "title": "Umurage w'Ubucukuzi mu Rwanda",
+    "description": "Filime yerekana imicungire y'ubucukuzi bw'amabuye y'agaciro irambye mu Rwanda"
+  },
+  "certification": {
+    "type": "Umuyobozi",
+    "title": "Umuyobozi w'Icyemezo cya ICGLR",
+    "description": "Umuyobozi uzuye ku mahame y'icyemezo cy'amabuye y'agaciro adafite amakimbirane"
+  },
+  "esg": {
+    "type": "Raporo",
+    "title": "ESG mu Bucukuzi bw'Afrika",
+    "description": "Imyitozo myiza y'Ibidukikije, Imibereho, n'Imiyoborere"
+  },
+  "geology": {
+    "type": "Isomo",
+    "title": "Geologiya y'Amabuye y'Agaciro muri Afrika",
+    "description": "Gusobanukirwa ubwoko butandukanye bw'amabuye y'agaciro n'imiterere ya geologiya muri Afrika"
+  },
+  "stories": {
+    "type": "Video",
+    "title": "Inkuru z'Intsinzi z'Abaturage",
+    "description": "Inkuru zukuri ziva mu miryango y'abacukuzi muri Afrika yose"
+  },
+  "supplyChain": "Urutonde rw'Ubufatanye",
+  "transparency": "Gukorera ku mugaragaro",
+  "sustainability": "Iterambere rirambye",
+  "community": "Umuryango",
+  "icglr": "ICGLR",
+  "ethics": "Imyitwarire",
+  "governance": "Imiyoborere",
+  "impact": "Ingaruka",
+  "geology": "Geologiya",
+  "science": "Ubumenyi",
+  "stories": "Inkuru",
+  "Access Resource": "Gera ku Bikoresho",
   "feedback": {
     "title": "Tanga Ibitekerezo",
     "description": "Dufashe kuzamura AfriTrace. Andika ibitekerezo byawe hano.",

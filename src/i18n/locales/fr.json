@@ -98,6 +98,45 @@
     "learnMoreDescription": "Accédez à notre bibliothèque complète de matériel éducatif, de programmes de formation et d'ateliers communautaires sur les pratiques minières responsables.",
     "exploreLibrary": "Explorer la Bibliothèque Complète"
   },
+  "blockchain": {
+    "type": "Cours",
+    "title": "Blockchain pour la traçabilité minérale",
+    "description": "Apprenez comment la technologie blockchain assure un suivi transparent et immuable des minéraux"
+  },
+  "heritage": {
+    "type": "Vidéo",
+    "title": "Patrimoine minier du Rwanda",
+    "description": "Documentaire sur les pratiques minières durables au Rwanda"
+  },
+  "certification": {
+    "type": "Guide",
+    "title": "Guide de certification CIRGL",
+    "description": "Guide complet des normes de certification des minéraux sans conflit"
+  },
+  "esg": {
+    "type": "Rapport",
+    "title": "ESG dans l'exploitation minière africaine",
+    "description": "Meilleures pratiques environnementales, sociales et de gouvernance"
+  },
+  "geology": {
+    "type": "Cours",
+    "title": "Géologie minérale africaine",
+    "description": "Comprendre la riche diversité géologique et les formations minérales de l'Afrique"
+  },
+  "stories": {
+    "type": "Vidéo",
+    "title": "Histoires de réussite communautaire",
+    "description": "Histoires réelles des communautés minières à travers l'Afrique"
+  },
+  "supplyChain": "Chaîne d'approvisionnement",
+  "transparency": "Transparence",
+  "sustainability": "Durabilité",
+  "icglr": "CIRGL",
+  "ethics": "Éthique",
+  "governance": "Gouvernance",
+  "impact": "Impact",
+  "science": "Science",
+  "Access Resource": "Accéder à la ressource",
   "feedback": {
     "title": "Rapport et Commentaires",
     "signInRequired": "Connexion requise:",

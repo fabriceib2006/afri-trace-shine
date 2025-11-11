@@ -40,11 +40,53 @@
     "description": "Jifunze athari chanya za AfriTrace kwa jamii za wachimbaji na mazingira."
   },
   "education": {
-    "title": "Jifunze Kuhusu Madini Halali",
-    "description": "Pata elimu kuhusu uchimbaji endelevu wa madini na viwango vya kimataifa.",
+    "title": "Jifunze Kuhusu Madini Yenye Uwajibikaji",
+    "subtitle": "Pata rasilimali za elimu kuhusu mazoea ya uchimbaji endelevu na viwango vya kimataifa",
     "downloadGuide": "Pakua Mwongozo",
     "watchVideo": "Tazama Video"
   },
+  "blockchain": {
+    "type": "Kozi",
+    "title": "Blockchain kwa Ufuatiliaji wa Madini",
+    "description": "Jifunze jinsi teknolojia ya blockchain inavyohakikisha ufuatiliaji ulio wazi na usioondoleka wa madini"
+  },
+  "heritage": {
+    "type": "Video",
+    "title": "Urithi wa Uchimbaji wa Rwanda",
+    "description": "Filamu kumbukizi kuhusu mazoea endelevu ya uchimbaji nchini Rwanda"
+  },
+  "certification": {
+    "type": "Mwongozo",
+    "title": "Mwongozo wa Uthibitisho wa ICGLR",
+    "description": "Mwongozo kamili wa viwango vya uthibitisho wa madini yasiyo na migogoro"
+  },
+  "esg": {
+    "type": "Ripoti",
+    "title": "ESG katika Uchimbaji wa Afrika",
+    "description": "Mazoea bora ya Mazingira, Jamii, na Utawala"
+  },
+  "geology": {
+    "type": "Kozi",
+    "title": "Jiolojia ya Madini ya Afrika",
+    "description": "Kuelewa utajiri wa jiolojia na miundo ya madini ya Afrika"
+  },
+  "stories": {
+    "type": "Video",
+    "title": "Hadithi za Mafanikio ya Jamii",
+    "description": "Hadithi halisi kutoka jamii za uchimbaji Afrika nzima"
+  },
+  "supplyChain": "Mlolongo wa Usambazaji",
+  "transparency": "Uwazi",
+  "sustainability": "Uendelevu",
+  "community": "Jamii",
+  "icglr": "ICGLR",
+  "ethics": "Maadili",
+  "governance": "Utawala",
+  "impact": "Athari",
+  "geology": "Jiolojia",
+  "science": "Sayansi",
+  "stories": "Hadithi",
+  "Access Resource": "Fikia Rasilimali",
   "feedback": {
     "title": "Toa Maoni",
     "description": "Tusaidie kuboresha AfriTrace. Tuma maoni yako hapa.",
