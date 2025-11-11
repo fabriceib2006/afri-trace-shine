@@ -85,8 +85,8 @@ const Dashboard = () => {
         {userRole === 'administrator' && (
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle>{t('dashboard.adminAccess')}</CardTitle>
-              <CardDescription>{t('dashboard.adminAccessDesc')}</CardDescription>
+              <CardTitle>{t('Admin Access')}</CardTitle>
+              <CardDescription>{t('Admin Access Desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <Button onClick={() => navigate('/admin')}>
