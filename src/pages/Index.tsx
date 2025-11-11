@@ -12,7 +12,7 @@ const Index = () => {
         <HeroSection />
         <TraceabilitySection />
         <CommunitySection />
-        
+        <EducationSection />
         <FeedbackSection />
       </main>
       <Footer />
